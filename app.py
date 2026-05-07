@@ -4,105 +4,204 @@ import numpy as np
 import plotly.express as px
 from PIL import Image
 
-# =========================================
-# PAGE
-# =========================================
+# =========================================================
+# PAGE CONFIG
+# =========================================================
 
 st.set_page_config(
     page_title="OT Scope",
     layout="wide"
 )
 
-# =========================================
-# DARK MODE CSS
-# =========================================
+# =========================================================
+# CUSTOM CSS
+# =========================================================
 
 st.markdown("""
 <style>
 
-/* Main background */
+/* =======================================================
+GLOBAL
+======================================================= */
 
 .stApp {
-    background-color: #0b1220;
+    background: linear-gradient(
+        180deg,
+        #050816 0%,
+        #071225 100%
+    );
     color: white;
 }
 
-/* Sidebar */
+/* =======================================================
+SIDEBAR
+======================================================= */
 
 section[data-testid="stSidebar"] {
-    background-color: #111827;
+    background: linear-gradient(
+        180deg,
+        #09101f 0%,
+        #0b1325 100%
+    );
+
+    width: 320px !important;
+
+    border-right: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Text */
+/* =======================================================
+SIDEBAR COMPACT SPACING
+======================================================= */
+
+div[role="radiogroup"] > label {
+    margin-bottom: -8px;
+}
+
+div[data-baseweb="select"] {
+    margin-bottom: -8px;
+}
+
+div[data-baseweb="input"] {
+    margin-bottom: -8px;
+}
+
+/* =======================================================
+TEXT
+======================================================= */
 
 h1, h2, h3, h4, h5, h6, p, label, div {
     color: white;
 }
 
-/* Metrics */
+/* =======================================================
+METRICS
+======================================================= */
 
 [data-testid="stMetricValue"] {
-    font-size: 18px;
+    font-size: 20px;
     color: white;
 }
 
 [data-testid="stMetricLabel"] {
     font-size: 12px;
-    color: #bbbbbb;
+    color: #9ca3af;
 }
 
-/* Buttons */
+/* =======================================================
+BUTTONS
+======================================================= */
 
 .stButton button {
-    background-color: #1f2937;
+
+    background: #111827;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 14px;
+
     color: white;
-    border-radius: 10px;
-    border: 1px solid #374151;
+
+    width: 100%;
+
+    padding: 10px;
+
+    transition: 0.2s;
 }
 
-/* Download button */
+.stButton button:hover {
+    border: 1px solid #22c55e;
+}
+
+/* =======================================================
+DOWNLOAD BUTTON
+======================================================= */
 
 .stDownloadButton button {
-    background-color: #1f2937;
-    color: white;
-    border-radius: 10px;
-    border: 1px solid #374151;
+
+    background: rgba(239,68,68,0.08);
+
+    border: 1px solid rgba(239,68,68,0.5);
+
+    border-radius: 14px;
+
+    color: #ff5f5f;
+
+    width: 100%;
+
+    padding: 10px;
+
+    transition: 0.2s;
+}
+
+.stDownloadButton button:hover {
+
+    background: rgba(239,68,68,0.15);
+}
+
+/* =======================================================
+CARD
+======================================================= */
+
+.card {
+
+    background: rgba(17,24,39,0.65);
+
+    border: 1px solid rgba(255,255,255,0.06);
+
+    border-radius: 24px;
+
+    padding: 24px;
+
+    backdrop-filter: blur(12px);
+
+    margin-bottom: 20px;
+}
+
+/* =======================================================
+SLIDER
+======================================================= */
+
+.stSlider {
+    padding-top: 0px;
+}
+
+/* =======================================================
+REMOVE PADDING TOP
+======================================================= */
+
+.block-container {
+    padding-top: 2rem;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
-# =========================================
-# TITLE
-# =========================================
+# =========================================================
+# SIZE PARAMETERS
+# =========================================================
 
-st.title("OT Scope")
+coronal_width = 1200
+coronal_height = 620
 
-# =========================================
-# IMPORTANT SIZE PARAMETERS
-# =========================================
-
-# ----- Coronal size -----
-
-coronal_width = 1400
-coronal_height = 500
-
-# ----- Dorsal size -----
-
-dorsal_width = 900
-dorsal_height = 500
-
-# ----- Dorsal spacing -----
+dorsal_width = 1200
+dorsal_height = 620
 
 gap = 0.24
+jitter = 0.10
 
-# ----- Dorsal thickness -----
+# =========================================================
+# SESSION STATE
+# =========================================================
 
-jitter = 0.1
+if "selected_index" not in st.session_state:
+    st.session_state.selected_index = None
 
-# =========================================
+if "plot_key" not in st.session_state:
+    st.session_state.plot_key = 0
+
+# =========================================================
 # SIDEBAR
-# =========================================
+# =========================================================
 
 logo = Image.open("otscope_logo.png")
 
@@ -111,18 +210,20 @@ st.sidebar.image(
     use_container_width=True
 )
 
-st.sidebar.markdown("---")
+st.sidebar.markdown("<br>", unsafe_allow_html=True)
 
-# ----- View mode -----
+# ---------------------------------------------------------
+# VIEW
+# ---------------------------------------------------------
 
 view_mode = st.sidebar.radio(
     "View",
     ["Coronal", "Dorsal"]
 )
 
-st.sidebar.markdown("---")
-
-# ----- Cluster -----
+# ---------------------------------------------------------
+# CLUSTER
+# ---------------------------------------------------------
 
 cluster = st.sidebar.selectbox(
     "Cluster",
@@ -130,18 +231,18 @@ cluster = st.sidebar.selectbox(
     index=0
 )
 
-st.sidebar.markdown("---")
-
-# ----- Gene -----
+# ---------------------------------------------------------
+# GENE
+# ---------------------------------------------------------
 
 gene = st.sidebar.text_input(
     "Gene",
     "Oprm1"
 )
 
-st.sidebar.markdown("---")
-
-# ----- Point size -----
+# ---------------------------------------------------------
+# POINT SIZE
+# ---------------------------------------------------------
 
 point_size = st.sidebar.slider(
     "Point size",
@@ -150,37 +251,27 @@ point_size = st.sidebar.slider(
     5
 )
 
-st.sidebar.markdown("---")
-
-# ----- Color scale -----
+# ---------------------------------------------------------
+# COLOR RANGE
+# ---------------------------------------------------------
 
 cmin = st.sidebar.number_input(
-    "Color Min",
+    "Min",
     value=0.0,
     step=0.1,
     format="%.1f"
 )
 
 cmax = st.sidebar.number_input(
-    "Color Max",
+    "Max",
     value=5.0,
     step=0.1,
     format="%.1f"
 )
 
-# =========================================
-# SESSION STATE INIT
-# =========================================
-
-if "selected_index" not in st.session_state:
-    st.session_state.selected_index = None
-
-if "plot_key" not in st.session_state:
-    st.session_state.plot_key = 0
-
-# =========================================
-# RESET SELECTION WHEN STATE CHANGES
-# =========================================
+# =========================================================
+# RESET STATE
+# =========================================================
 
 current_state = (
     view_mode,
@@ -198,9 +289,9 @@ if current_state != st.session_state.last_state:
 
     st.session_state.last_state = current_state
 
-# =========================================
+# =========================================================
 # LOAD DATA
-# =========================================
+# =========================================================
 
 if cluster == "D1":
 
@@ -214,9 +305,9 @@ else:
 
     df = pd.read_csv("whole_ICj.csv")
 
-# =========================================
+# =========================================================
 # SECTION NUMBER
-# =========================================
+# =========================================================
 
 df["section_num"] = (
     df["brain_section_label"]
@@ -226,9 +317,9 @@ df["section_num"] = (
     .astype(int)
 )
 
-# =========================================
+# =========================================================
 # DORSAL MAP
-# =========================================
+# =========================================================
 
 sections_plot = [55,54,53,52,51,50,49,48,47]
 
@@ -242,17 +333,15 @@ df["dorsal_y"] = (
     * gap
 )
 
-# ----- FIXED JITTER -----
-
 np.random.seed(42)
 
 df["dorsal_y"] += (
     np.random.rand(len(df)) - 0.5
 ) * 2 * jitter
 
-# =========================================
+# =========================================================
 # CORONAL MODE
-# =========================================
+# =========================================================
 
 if view_mode == "Coronal":
 
@@ -266,36 +355,33 @@ if view_mode == "Coronal":
 
     df = df[df["section_num"] == section]
 
-# =========================================
+# =========================================================
 # RESET INDEX
-# =========================================
+# =========================================================
 
 df = df.reset_index(drop=True)
 
-# =========================================
+# =========================================================
 # CHECK GENE
-# =========================================
+# =========================================================
 
 if gene not in df.columns:
 
     st.error(f"Gene '{gene}' not found.")
-
-    st.write(df.columns.tolist())
-
     st.stop()
 
-# =========================================
+# =========================================================
 # Y AXIS
-# =========================================
+# =========================================================
 
 if view_mode == "Coronal":
     y_plot = "y"
 else:
     y_plot = "dorsal_y"
 
-# =========================================
-# MAIN FIGURE
-# =========================================
+# =========================================================
+# FIGURE
+# =========================================================
 
 fig = px.scatter(
     df,
@@ -304,40 +390,42 @@ fig = px.scatter(
     color=gene,
     hover_data=[
         gene,
-        "brain_section_label",
-        "x",
-        "y"
+        "brain_section_label"
     ],
     color_continuous_scale="Viridis",
     template="plotly_dark"
 )
 
-# =========================================
+# ---------------------------------------------------------
 # COLOR SCALE
-# =========================================
+# ---------------------------------------------------------
 
 fig.update_coloraxes(
+
     cmin=cmin,
     cmax=cmax,
+
     colorbar=dict(
         title=gene,
-        thickness=15,
+        thickness=20,
         title_font=dict(size=18),
         tickfont=dict(size=14)
     )
 )
 
-# =========================================
+# ---------------------------------------------------------
 # MARKER SIZE
-# =========================================
+# ---------------------------------------------------------
 
 fig.update_traces(
-    marker=dict(size=point_size)
+    marker=dict(
+        size=point_size
+    )
 )
 
-# =========================================
-# AXIS MODE
-# =========================================
+# ---------------------------------------------------------
+# AXIS
+# ---------------------------------------------------------
 
 if view_mode == "Coronal":
 
@@ -358,22 +446,20 @@ else:
     fig_width = dorsal_width
     fig_height = dorsal_height
 
-# ----- Hide axes -----
-
 fig.update_xaxes(visible=False)
 fig.update_yaxes(visible=False)
 
-# =========================================
+# ---------------------------------------------------------
 # LAYOUT
-# =========================================
+# ---------------------------------------------------------
 
 fig.update_layout(
 
     width=fig_width,
     height=fig_height,
 
-    paper_bgcolor="#0b1220",
-    plot_bgcolor="#0b1220",
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
 
     font=dict(
         color="white"
@@ -383,36 +469,61 @@ fig.update_layout(
         l=0,
         r=0,
         t=80,
-        b=40
+        b=0
     ),
 
     title=dict(
         text=f"{gene} | {cluster} | {view_mode}",
-        x=0.5
+        x=0.02,
+        y=0.96,
+        font=dict(
+            size=22,
+            color="white"
+        )
     )
 )
 
-# =========================================
-# TOP COLUMNS
-# =========================================
+# =========================================================
+# TITLE
+# =========================================================
 
-plot_col, stat_col = st.columns([6,1])
+st.markdown("""
+<h1 style="
+font-size:64px;
+font-weight:800;
+margin-bottom:20px;
+">
+OT Scope
+</h1>
+""", unsafe_allow_html=True)
 
-# =========================================
-# PLOT PANEL
-# =========================================
+# =========================================================
+# MAIN LAYOUT
+# =========================================================
+
+plot_col, stat_col = st.columns([5.5,1.3])
+
+# =========================================================
+# PLOT CARD
+# =========================================================
 
 with plot_col:
+
+    st.markdown('<div class="card">', unsafe_allow_html=True)
 
     clicked = st.plotly_chart(
         fig,
         key=f"main_plot_{st.session_state.plot_key}",
         on_select="rerun",
         selection_mode=("lasso", "box"),
-        use_container_width=False
+        use_container_width=True
     )
 
-    # ----- Update selection -----
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    # -----------------------------------------------------
+    # UPDATE SELECTION
+    # -----------------------------------------------------
 
     if (
         clicked is not None
@@ -428,9 +539,9 @@ with plot_col:
             for p in points
         ]
 
-# =========================================
+# =========================================================
 # SELECTED DATA
-# =========================================
+# =========================================================
 
 if st.session_state.selected_index is not None:
 
@@ -451,13 +562,23 @@ else:
 
     selected_df = df
 
-# =========================================
-# STATISTICS PANEL
-# =========================================
+# =========================================================
+# STATISTICS CARD
+# =========================================================
 
 with stat_col:
 
-    st.subheader("Statistics")
+    st.markdown('<div class="card">', unsafe_allow_html=True)
+
+    st.markdown("""
+    <h2 style="
+    font-size:42px;
+    font-weight:700;
+    margin-bottom:20px;
+    ">
+    Statistics
+    </h2>
+    """, unsafe_allow_html=True)
 
     expr = selected_df[gene]
 
@@ -481,11 +602,11 @@ with stat_col:
         round(expr.max(), 3)
     )
 
-    st.markdown("")
+    st.markdown("<br>", unsafe_allow_html=True)
 
-    # =====================================
+    # -----------------------------------------------------
     # CLEAR BUTTON
-    # =====================================
+    # -----------------------------------------------------
 
     clear_selection = st.button(
         "Clear Selection"
@@ -499,11 +620,11 @@ with stat_col:
 
         st.rerun()
 
-    st.markdown("")
+    st.markdown("<br>", unsafe_allow_html=True)
 
-    # =====================================
+    # -----------------------------------------------------
     # DOWNLOAD CSV
-    # =====================================
+    # -----------------------------------------------------
 
     csv = selected_df.to_csv(
         index=False
@@ -516,11 +637,23 @@ with stat_col:
         mime="text/csv"
     )
 
-# =========================================
-# HISTOGRAM
-# =========================================
+    st.markdown('</div>', unsafe_allow_html=True)
 
-st.subheader("Histogram")
+# =========================================================
+# HISTOGRAM CARD
+# =========================================================
+
+st.markdown('<div class="card">', unsafe_allow_html=True)
+
+st.markdown("""
+<h2 style="
+font-size:36px;
+font-weight:700;
+margin-bottom:10px;
+">
+Histogram
+</h2>
+""", unsafe_allow_html=True)
 
 hist_fig = px.histogram(
     selected_df,
@@ -531,11 +664,10 @@ hist_fig = px.histogram(
 
 hist_fig.update_layout(
 
-    width=dorsal_width,
-    height=250,
+    height=260,
 
-    paper_bgcolor="#0b1220",
-    plot_bgcolor="#0b1220",
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
 
     font=dict(
         color="white"
@@ -544,12 +676,14 @@ hist_fig.update_layout(
     margin=dict(
         l=0,
         r=0,
-        t=20,
+        t=10,
         b=0
     )
 )
 
 st.plotly_chart(
     hist_fig,
-    use_container_width=False
+    use_container_width=True
 )
+
+st.markdown('</div>', unsafe_allow_html=True)

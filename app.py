@@ -85,6 +85,9 @@ cmax = st.sidebar.number_input(
 if "selected_index" not in st.session_state:
     st.session_state.selected_index = None
 
+if "plot_key" not in st.session_state:
+    st.session_state.plot_key = 0
+
 # =========================================
 # RESET SELECTION WHEN STATE CHANGES
 # =========================================
@@ -100,6 +103,9 @@ if "last_state" not in st.session_state:
 if current_state != st.session_state.last_state:
 
     st.session_state.selected_index = None
+
+    st.session_state.plot_key += 1
+
     st.session_state.last_state = current_state
 
 # =========================================
@@ -256,7 +262,7 @@ fig.update_layout(
 )
 
 # =========================================
-# CLEAR SELECTION BUTTON
+# CLEAR BUTTON
 # =========================================
 
 clear_selection = st.button(
@@ -267,9 +273,10 @@ if clear_selection:
 
     st.session_state.selected_index = None
 
-    clicked = None
+    st.session_state.plot_key += 1
 
     st.rerun()
+
 # =========================================
 # TOP COLUMNS
 # =========================================
@@ -284,26 +291,27 @@ with plot_col:
 
     clicked = st.plotly_chart(
         fig,
-        key="main_plot",
+        key=f"main_plot_{st.session_state.plot_key}",
         on_select="rerun",
         selection_mode=("lasso", "box")
     )
 
     # ----- Update selection -----
-if (
-    clicked is not None
-    and not clear_selection
-    and clicked.selection
-    and "points" in clicked.selection
-    and len(clicked.selection["points"]) > 0
-):
 
-    points = clicked.selection["points"]
+    if (
+        clicked is not None
+        and not clear_selection
+        and clicked.selection
+        and "points" in clicked.selection
+        and len(clicked.selection["points"]) > 0
+    ):
 
-    st.session_state.selected_index = [
-        p["point_index"]
-        for p in points
-    ]
+        points = clicked.selection["points"]
+
+        st.session_state.selected_index = [
+            p["point_index"]
+            for p in points
+        ]
 
 # =========================================
 # SELECTED DATA

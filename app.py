@@ -75,7 +75,7 @@ st.markdown("""
 # =========================================
 # SIDEBAR
 # =========================================
-logo = Image.open("otscope_logo.png")
+logo = Image.open("ot_scope.png")
 
 st.sidebar.image(
     logo,

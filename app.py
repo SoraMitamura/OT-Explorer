@@ -301,6 +301,18 @@ gene = st.sidebar.selectbox(
     if "Oprm1" in gene_list else 0
 )
 # =========================================================
+# SECTION NUMBER
+# =========================================================
+
+df["section_num"] = (
+    df["brain_section_label"]
+    .astype(str)
+    .str.split(".")
+    .str[-1]
+    .astype(int)
+)
+
+# =========================================================
 # CORONAL MODE
 # =========================================================
 
@@ -315,17 +327,6 @@ if view_mode == "Coronal":
     )
 
     df = df[df["section_num"] == section]
-# =========================================================
-# SECTION NUMBER
-# =========================================================
-
-df["section_num"] = (
-    df["brain_section_label"]
-    .astype(str)
-    .str.split(".")
-    .str[-1]
-    .astype(int)
-)
 
 # ---------------------------------------------------------
 # POINT SIZE

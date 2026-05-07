@@ -112,13 +112,13 @@ METRICS
 
 div[data-testid="stMetricLabel"] {
 
-    font-size: 20px !important;
+    font-size: 24px !important;
     color: #9ca3af !important;
 }
 
 div[data-testid="stMetricValue"] {
 
-    font-size: 24px !important;
+    font-size: 30px !important;
     line-height: 1.0 !important;
 
     color: white !important;

@@ -3,83 +3,104 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 from PIL import Image
+
 # =========================================
 # PAGE
 # =========================================
 
 st.set_page_config(
-    page_title="OT Explorer",
+    page_title="OT Scope",
     layout="wide"
 )
 
 # =========================================
-# IMPORTANT SIZE PARAMETERS
-# =========================================
-#
-# coronal_width
-#   → coronal view の横幅
-#
-# coronal_height
-#   → coronal view の縦幅
-#
-# dorsal_width
-#   → dorsal view の横幅
-#
-# dorsal_height
-#   → dorsal view の縦幅
-#
-# gap
-#   → dorsal section 間隔
-#
-# jitter
-#   → dorsal section の太さ
-#
-# =========================================
-
-# ----- Coronal size -----
-
-coronal_width = 700
-coronal_height = 500
-
-# ----- Dorsal size -----
-
-dorsal_width = 500
-dorsal_height = 500
-
-# ----- Dorsal spacing -----
-
-gap = 0.24
-
-# ----- Dorsal thickness -----
-
-jitter = 0.1
-
-# =========================================
-# SMALLER METRICS
+# DARK MODE CSS
 # =========================================
 
 st.markdown("""
 <style>
+
+/* Main background */
+
+.stApp {
+    background-color: #0e1117;
+    color: white;
+}
+
+/* Sidebar */
+
+section[data-testid="stSidebar"] {
+    background-color: #161b22;
+}
+
+/* Text */
+
+h1, h2, h3, h4, h5, h6, p, label, div {
+    color: white;
+}
+
+/* Metrics */
+
 [data-testid="stMetricValue"] {
     font-size: 18px;
+    color: white;
 }
 
 [data-testid="stMetricLabel"] {
     font-size: 12px;
+    color: #bbbbbb;
 }
+
+/* Buttons */
+
+.stButton button {
+    background-color: #222b36;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid #444;
+}
+
+/* Download button */
+
+.stDownloadButton button {
+    background-color: #222b36;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid #444;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
 # =========================================
+# TITLE
+# =========================================
+
+st.title("OT Scope")
+
+# =========================================
+# IMPORTANT SIZE PARAMETERS
+# =========================================
+
+coronal_width = 1400
+coronal_height = 500
+
+dorsal_width = 800
+dorsal_height = 500
+
+gap = 0.24
+jitter = 0.1
+
+# =========================================
 # SIDEBAR
 # =========================================
+
 logo = Image.open("ot_scope.png")
 
 st.sidebar.image(
     logo,
     use_container_width=True
 )
-
 
 # ----- View mode -----
 
@@ -117,14 +138,17 @@ point_size = st.sidebar.slider(
 cmin = st.sidebar.number_input(
     "Color Min",
     value=0.0,
-    step=0.1
+    step=0.1,
+    format="%.1f"
 )
 
 cmax = st.sidebar.number_input(
     "Color Max",
     value=5.0,
-    step=0.1
+    step=0.1,
+    format="%.1f"
 )
+
 # =========================================
 # SESSION STATE INIT
 # =========================================
@@ -265,7 +289,8 @@ fig = px.scatter(
         "x",
         "y"
     ],
-    color_continuous_scale="Viridis"
+    color_continuous_scale="Viridis",
+    template="plotly_dark"
 )
 
 # =========================================
@@ -274,7 +299,10 @@ fig = px.scatter(
 
 fig.update_coloraxes(
     cmin=cmin,
-    cmax=cmax
+    cmax=cmax,
+    colorbar=dict(
+        thickness=15
+    )
 )
 
 # =========================================
@@ -318,10 +346,11 @@ fig.update_yaxes(visible=False)
 # =========================================
 
 fig.update_layout(
-    template="simple_white",
-
     width=fig_width,
     height=fig_height,
+
+    paper_bgcolor="#0e1117",
+    plot_bgcolor="#0e1117",
 
     margin=dict(
         l=0,
@@ -330,24 +359,11 @@ fig.update_layout(
         b=0
     ),
 
-    title=f"{gene} | {cluster} | {view_mode}"
+    title=dict(
+        text=f"{gene} | {cluster} | {view_mode}",
+        x=0.5
+    )
 )
-
-# =========================================
-# CLEAR BUTTON
-# =========================================
-
-clear_selection = st.button(
-    "Clear Selection"
-)
-
-if clear_selection:
-
-    st.session_state.selected_index = None
-
-    st.session_state.plot_key += 1
-
-    st.rerun()
 
 # =========================================
 # TOP COLUMNS
@@ -373,7 +389,6 @@ with plot_col:
 
     if (
         clicked is not None
-        and not clear_selection
         and clicked.selection
         and "points" in clicked.selection
         and len(clicked.selection["points"]) > 0
@@ -440,7 +455,23 @@ with stat_col:
     )
 
     # =====================================
-    # DOWNLOAD SELECTED CSV
+    # CLEAR BUTTON
+    # =====================================
+
+    clear_selection = st.button(
+        "Clear Selection"
+    )
+
+    if clear_selection:
+
+        st.session_state.selected_index = None
+
+        st.session_state.plot_key += 1
+
+        st.rerun()
+
+    # =====================================
+    # DOWNLOAD CSV
     # =====================================
 
     csv = selected_df.to_csv(
@@ -463,14 +494,16 @@ st.subheader("Histogram")
 hist_fig = px.histogram(
     selected_df,
     x=gene,
-    nbins=50
+    nbins=50,
+    template="plotly_dark"
 )
 
 hist_fig.update_layout(
-    template="simple_white",
-
-    width=800,
+    width=dorsal_width,
     height=250,
+
+    paper_bgcolor="#0e1117",
+    plot_bgcolor="#0e1117",
 
     margin=dict(
         l=0,

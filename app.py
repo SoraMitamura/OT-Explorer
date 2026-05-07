@@ -259,34 +259,7 @@ cluster = st.sidebar.selectbox(
 )
 
 # ---------------------------------------------------------
-# GENE
-# ---------------------------------------------------------
 
-# ---------------------------------------------------------
-# GENE LIST
-# ---------------------------------------------------------
-
-gene_list = sorted([
-    col for col in df.columns
-    if col not in [
-        "x",
-        "y",
-        "dorsal_y",
-        "section_num",
-        "brain_section_label"
-    ]
-])
-
-# ---------------------------------------------------------
-# GENE SELECTBOX
-# ---------------------------------------------------------
-
-gene = st.sidebar.selectbox(
-    "Gene",
-    gene_list,
-    index=gene_list.index("Oprm1")
-    if "Oprm1" in gene_list else 0
-)
 
 # ---------------------------------------------------------
 # POINT SIZE
@@ -352,7 +325,31 @@ elif cluster == "D2":
 else:
 
     df = pd.read_csv("whole_ICj.csv")
+# ---------------------------------------------------------
+# GENE LIST
+# ---------------------------------------------------------
 
+gene_list = sorted([
+    col for col in df.columns
+    if col not in [
+        "x",
+        "y",
+        "dorsal_y",
+        "section_num",
+        "brain_section_label"
+    ]
+])
+
+# ---------------------------------------------------------
+# GENE SELECTBOX
+# ---------------------------------------------------------
+
+gene = st.sidebar.selectbox(
+    "Gene",
+    gene_list,
+    index=gene_list.index("Oprm1")
+    if "Oprm1" in gene_list else 0
+)
 # =========================================================
 # SECTION NUMBER
 # =========================================================

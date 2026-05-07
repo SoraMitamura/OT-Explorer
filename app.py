@@ -12,8 +12,6 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("OT Scope")
-
 # =========================================
 # IMPORTANT SIZE PARAMETERS
 # =========================================

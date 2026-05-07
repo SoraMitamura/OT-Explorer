@@ -282,8 +282,10 @@ gene_list = sorted([
     if col not in [
         "x",
         "y",
+        "z",
         "dorsal_y",
         "section_num",
+        "cell_label
         "brain_section_label"
     ]
 ])

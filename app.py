@@ -275,6 +275,7 @@ with plot_col:
     if clear_selection:
 
         st.session_state.selected_index = None
+
     clicked = st.plotly_chart(
         fig,
         key="main_plot",
@@ -285,7 +286,8 @@ with plot_col:
     # ----- Update selection -----
 
     if (
-        clicked.selection
+        not clear_selection
+        and clicked.selection
         and "points" in clicked.selection
         and len(clicked.selection["points"]) > 0
     ):

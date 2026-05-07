@@ -290,20 +290,20 @@ with plot_col:
     )
 
     # ----- Update selection -----
+if (
+    clicked is not None
+    and not clear_selection
+    and clicked.selection
+    and "points" in clicked.selection
+    and len(clicked.selection["points"]) > 0
+):
 
-    if (
-        not clear_selection
-        and clicked.selection
-        and "points" in clicked.selection
-        and len(clicked.selection["points"]) > 0
-    ):
+    points = clicked.selection["points"]
 
-        points = clicked.selection["points"]
-
-        st.session_state.selected_index = [
-            p["point_index"]
-            for p in points
-        ]
+    st.session_state.selected_index = [
+        p["point_index"]
+        for p in points
+    ]
 
 # =========================================
 # SELECTED DATA

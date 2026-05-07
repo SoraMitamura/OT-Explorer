@@ -113,14 +113,15 @@ point_size = st.sidebar.slider(
 
 cmin = st.sidebar.number_input(
     "Color Min",
-    value=0.0
+    value=0.0,
+    step=0.1
 )
 
 cmax = st.sidebar.number_input(
     "Color Max",
-    value=5.0
+    value=5.0,
+    step=0.1
 )
-
 # =========================================
 # SESSION STATE INIT
 # =========================================

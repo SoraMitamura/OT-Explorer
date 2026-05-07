@@ -20,9 +20,15 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* selectbox selected text */
+/* dropdown menu text */
 
-div[data-baseweb="select"] * {
+ul[role="listbox"] li {
+    color: black !important;
+}
+
+/* selected item text */
+
+div[data-baseweb="select"] span {
     color: black !important;
 }
 

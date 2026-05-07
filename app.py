@@ -266,6 +266,9 @@ clear_selection = st.button(
 if clear_selection:
 
     st.session_state.selected_index = None
+
+    clicked = None
+
     st.rerun()
 # =========================================
 # TOP COLUMNS

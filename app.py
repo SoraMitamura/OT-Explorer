@@ -45,7 +45,7 @@ coronal_height = 500
 
 # ----- Dorsal size -----
 
-dorsal_width = 600
+dorsal_width = 800
 dorsal_height = 500
 
 # ----- Dorsal spacing -----
@@ -364,6 +364,7 @@ with plot_col:
         selection_mode=("lasso", "box"),
         use_container_width=False
     )
+
     # ----- Update selection -----
 
     if (
@@ -434,6 +435,21 @@ with stat_col:
         round(expr.max(), 3)
     )
 
+    # =====================================
+    # DOWNLOAD SELECTED CSV
+    # =====================================
+
+    csv = selected_df.to_csv(
+        index=False
+    ).encode("utf-8")
+
+    st.download_button(
+        label="Download Selected CSV",
+        data=csv,
+        file_name=f"{gene}_{cluster}_selected.csv",
+        mime="text/csv"
+    )
+
 # =========================================
 # HISTOGRAM
 # =========================================
@@ -449,7 +465,7 @@ hist_fig = px.histogram(
 hist_fig.update_layout(
     template="simple_white",
 
-    width=1400,
+    width=800,
     height=250,
 
     margin=dict(
@@ -460,4 +476,7 @@ hist_fig.update_layout(
     )
 )
 
-st.plotly_chart(hist_fig)
+st.plotly_chart(
+    hist_fig,
+    use_container_width=False
+)

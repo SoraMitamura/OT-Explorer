@@ -20,6 +20,14 @@ st.set_page_config(
 st.markdown("""
 <style>
 
+/* selectbox selected text */
+
+div[data-baseweb="select"] * {
+    color: black !important;
+}
+
+</style>
+
 /* =======================================================
 GLOBAL
 ======================================================= */

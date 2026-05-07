@@ -23,14 +23,14 @@ st.markdown("""
 /* Main background */
 
 .stApp {
-    background-color: #0e1117;
+    background-color: #0b1220;
     color: white;
 }
 
 /* Sidebar */
 
 section[data-testid="stSidebar"] {
-    background-color: #161b22;
+    background-color: #111827;
 }
 
 /* Text */
@@ -54,19 +54,19 @@ h1, h2, h3, h4, h5, h6, p, label, div {
 /* Buttons */
 
 .stButton button {
-    background-color: #222b36;
+    background-color: #1f2937;
     color: white;
     border-radius: 10px;
-    border: 1px solid #444;
+    border: 1px solid #374151;
 }
 
 /* Download button */
 
 .stDownloadButton button {
-    background-color: #222b36;
+    background-color: #1f2937;
     color: white;
     border-radius: 10px;
-    border: 1px solid #444;
+    border: 1px solid #374151;
 }
 
 </style>
@@ -82,25 +82,36 @@ st.title("OT Scope")
 # IMPORTANT SIZE PARAMETERS
 # =========================================
 
+# ----- Coronal size -----
+
 coronal_width = 1400
 coronal_height = 500
 
-dorsal_width = 800
+# ----- Dorsal size -----
+
+dorsal_width = 900
 dorsal_height = 500
 
+# ----- Dorsal spacing -----
+
 gap = 0.24
+
+# ----- Dorsal thickness -----
+
 jitter = 0.1
 
 # =========================================
 # SIDEBAR
 # =========================================
 
-logo = Image.open("ot_scope.png")
+logo = Image.open("otscope_logo.png")
 
 st.sidebar.image(
     logo,
     use_container_width=True
 )
+
+st.sidebar.markdown("---")
 
 # ----- View mode -----
 
@@ -108,6 +119,8 @@ view_mode = st.sidebar.radio(
     "View",
     ["Coronal", "Dorsal"]
 )
+
+st.sidebar.markdown("---")
 
 # ----- Cluster -----
 
@@ -117,12 +130,16 @@ cluster = st.sidebar.selectbox(
     index=0
 )
 
+st.sidebar.markdown("---")
+
 # ----- Gene -----
 
 gene = st.sidebar.text_input(
     "Gene",
     "Oprm1"
 )
+
+st.sidebar.markdown("---")
 
 # ----- Point size -----
 
@@ -132,6 +149,8 @@ point_size = st.sidebar.slider(
     10,
     5
 )
+
+st.sidebar.markdown("---")
 
 # ----- Color scale -----
 
@@ -301,7 +320,10 @@ fig.update_coloraxes(
     cmin=cmin,
     cmax=cmax,
     colorbar=dict(
-        thickness=15
+        title=gene,
+        thickness=15,
+        title_font=dict(size=18),
+        tickfont=dict(size=14)
     )
 )
 
@@ -346,17 +368,22 @@ fig.update_yaxes(visible=False)
 # =========================================
 
 fig.update_layout(
+
     width=fig_width,
     height=fig_height,
 
-    paper_bgcolor="#0e1117",
-    plot_bgcolor="#0e1117",
+    paper_bgcolor="#0b1220",
+    plot_bgcolor="#0b1220",
+
+    font=dict(
+        color="white"
+    ),
 
     margin=dict(
         l=0,
         r=0,
-        t=40,
-        b=0
+        t=80,
+        b=40
     ),
 
     title=dict(
@@ -369,7 +396,7 @@ fig.update_layout(
 # TOP COLUMNS
 # =========================================
 
-plot_col, stat_col = st.columns([5,1])
+plot_col, stat_col = st.columns([6,1])
 
 # =========================================
 # PLOT PANEL
@@ -454,6 +481,8 @@ with stat_col:
         round(expr.max(), 3)
     )
 
+    st.markdown("")
+
     # =====================================
     # CLEAR BUTTON
     # =====================================
@@ -469,6 +498,8 @@ with stat_col:
         st.session_state.plot_key += 1
 
         st.rerun()
+
+    st.markdown("")
 
     # =====================================
     # DOWNLOAD CSV
@@ -499,11 +530,16 @@ hist_fig = px.histogram(
 )
 
 hist_fig.update_layout(
+
     width=dorsal_width,
     height=250,
 
-    paper_bgcolor="#0e1117",
-    plot_bgcolor="#0e1117",
+    paper_bgcolor="#0b1220",
+    plot_bgcolor="#0b1220",
+
+    font=dict(
+        color="white"
+    ),
 
     margin=dict(
         l=0,

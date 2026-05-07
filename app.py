@@ -652,7 +652,7 @@ st.markdown(
     <h2 style="
     font-size:26px;
     font-weight:700;
-    margin-top:-100px;
+    margin-top:-80px;
     margin-bottom:-25px;
     padding-left:5px;
     ">

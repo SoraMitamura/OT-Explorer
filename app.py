@@ -642,22 +642,24 @@ with stat_col:
     )
 
     st.markdown('</div>', unsafe_allow_html=True)
-
 # =========================================================
 # HISTOGRAM
 # =========================================================
 
-st.markdown("""
-<h2 style="
-font-size:26px;
-font-weight:700;
-margin-top:-40px;
-margin-bottom:-25px;
-padding-left:5px;
-">
-Histogram
-</h2>
-""", unsafe_allow_html=True)
+st.markdown(
+    f"""
+    <h2 style="
+    font-size:26px;
+    font-weight:700;
+    margin-top:-40px;
+    margin-bottom:-25px;
+    padding-left:5px;
+    ">
+    Histogram
+    </h2>
+    """,
+    unsafe_allow_html=True
+)
 
 hist_fig = px.histogram(
     selected_df,
@@ -668,7 +670,7 @@ hist_fig = px.histogram(
 
 hist_fig.update_layout(
 
-    height=260,
+    height=220,
 
     paper_bgcolor="rgba(0,0,0,0)",
     plot_bgcolor="rgba(0,0,0,0)",
@@ -680,7 +682,7 @@ hist_fig.update_layout(
     margin=dict(
         l=0,
         r=0,
-        t=10,
+        t=0,
         b=0
     )
 )

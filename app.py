@@ -559,7 +559,7 @@ else:
 
 with stat_col:
 
-    st.markdown('<div class="card">', unsafe_allow_html=True)
+    #st.markdown('<div class="card">', unsafe_allow_html=True)
 
     st.markdown("""
     <h2 style="

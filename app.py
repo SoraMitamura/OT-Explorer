@@ -321,7 +321,7 @@ point_size = st.sidebar.slider(
 #    step=0.1,
 #    format="%.1f"
 #)
-
+cmin = 0;
 cmax = st.sidebar.number_input(
     "Max",
     value=5.0,

@@ -651,8 +651,8 @@ st.markdown("""
 <h2 style="
 font-size:26px;
 font-weight:700;
-margin-top:0px;
-margin-bottom:-10px;
+margin-top:-40px;
+margin-bottom:-25px;
 padding-left:5px;
 ">
 Histogram

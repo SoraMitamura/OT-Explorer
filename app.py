@@ -97,7 +97,31 @@ h1, h2, h3, h4, h5, h6, p, label, div {
 METRICS
 ======================================================= */
 
-div[data-testid="stMetric"] {
+div[data-testid="stMetricLabel"] {
+
+    font-size: 18px !important;
+    color: #9ca3af !important;
+}
+
+div[data-testid="stMetricLabel"] {
+
+    font-size: 18px !important;
+    color: #9ca3af !important;
+}
+
+div[data-testid="stMetricValue"] {
+
+    font-size: 30px !important;
+    line-height: 1.0 !important;
+
+    color: white !important;
+}
+
+    font-size: 30px !important;
+    line-height: 1.0 !important;
+
+    color: white !important;
+}
 
     padding-top: 0px !important;
     padding-bottom: 0px !important;

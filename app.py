@@ -580,7 +580,7 @@ with stat_col:
     font-size:24px;
     font-weight:650;
     margin-top:0px;
-    margin-bottom:10px;
+    margin-bottom:8px;
     line-height:1.1;
     ">
     Statistics
@@ -594,8 +594,6 @@ with stat_col:
     st.markdown("""
     <style>
 
-    /* metric block */
-
     div[data-testid="stMetric"] {
 
         padding-top: 0px !important;
@@ -605,15 +603,11 @@ with stat_col:
         margin-bottom: -8px !important;
     }
 
-    /* metric label */
-
     div[data-testid="stMetricLabel"] {
 
         font-size: 11px !important;
         color: #9ca3af !important;
     }
-
-    /* metric value */
 
     div[data-testid="stMetricValue"] {
 
@@ -653,7 +647,7 @@ with stat_col:
     )
 
     # -----------------------------------------------------
-    # SMALL GAP
+    # GAP
     # -----------------------------------------------------
 
     st.markdown(
@@ -666,7 +660,8 @@ with stat_col:
     # -----------------------------------------------------
 
     clear_selection = st.button(
-        "Clear Selection"
+        "Clear Selection",
+        key="clear_selection_button"
     )
 
     if clear_selection:
@@ -678,7 +673,7 @@ with stat_col:
         st.rerun()
 
     # -----------------------------------------------------
-    # SMALL GAP
+    # GAP
     # -----------------------------------------------------
 
     st.markdown(
@@ -698,90 +693,8 @@ with stat_col:
         label="Download Selected CSV",
         data=csv,
         file_name=f"{gene}_{cluster}_selected.csv",
-        mime="text/csv"
+        mime="text/csv",
+        key="download_selected_csv"
     )
 
     st.markdown('</div>', unsafe_allow_html=True)
-    # -----------------------------------------------------
-    # CLEAR BUTTON
-    # -----------------------------------------------------
-
-    clear_selection = st.button(
-        "Clear Selection"
-    )
-
-    if clear_selection:
-
-        st.session_state.selected_index = None
-
-        st.session_state.plot_key += 1
-
-        st.rerun()
-
-    st.markdown("<br>", unsafe_allow_html=True)
-
-    # -----------------------------------------------------
-    # DOWNLOAD CSV
-    # -----------------------------------------------------
-
-    csv = selected_df.to_csv(
-        index=False
-    ).encode("utf-8")
-
-    st.download_button(
-        label="Download Selected CSV",
-        data=csv,
-        file_name=f"{gene}_{cluster}_selected.csv",
-        mime="text/csv"
-    )
-
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# =========================================================
-# HISTOGRAM CARD
-# =========================================================
-
-st.markdown('<div class="card">', unsafe_allow_html=True)
-
-st.markdown("""
-<h2 style="
-font-size:36px;
-font-weight:700;
-margin-bottom:10px;
-">
-Histogram
-</h2>
-""", unsafe_allow_html=True)
-
-hist_fig = px.histogram(
-    selected_df,
-    x=gene,
-    nbins=50,
-    template="plotly_dark"
-)
-
-hist_fig.update_layout(
-
-    height=260,
-
-    paper_bgcolor="rgba(0,0,0,0)",
-    plot_bgcolor="rgba(0,0,0,0)",
-
-    font=dict(
-        color="white"
-    ),
-
-    margin=dict(
-        l=0,
-        r=0,
-        t=10,
-        b=0
-    )
-)
-
-st.plotly_chart(
-    hist_fig,
-    use_container_width=True
-)
-
-st.markdown('</div>', unsafe_allow_html=True)

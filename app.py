@@ -257,10 +257,46 @@ cluster = st.sidebar.selectbox(
     ["D1", "D2", "ICj"],
     index=0
 )
+# =========================================================
+# LOAD DATA
+# =========================================================
+
+if cluster == "D1":
+
+    df = pd.read_csv("c61_whole_OT.csv")
+
+elif cluster == "D2":
+
+    df = pd.read_csv("c62_whole_OT.csv")
+
+else:
+
+    df = pd.read_csv("whole_ICj.csv")
 
 # ---------------------------------------------------------
+# GENE LIST
+# ---------------------------------------------------------
 
+gene_list = sorted([
+    col for col in df.columns
+    if col not in [
+        "x",
+        "y",
+        "dorsal_y",
+        "section_num",
+        "brain_section_label"
+    ]
+])
 
+# ---------------------------------------------------------
+# GENE SELECTBOX
+# ---------------------------------------------------------
+gene = st.sidebar.selectbox(
+    "Gene",
+    gene_list,
+    index=gene_list.index("Oprm1")
+    if "Oprm1" in gene_list else 0
+    
 # ---------------------------------------------------------
 # POINT SIZE
 # ---------------------------------------------------------
@@ -310,45 +346,8 @@ if current_state != st.session_state.last_state:
 
     st.session_state.last_state = current_state
 
-# =========================================================
-# LOAD DATA
-# =========================================================
 
-if cluster == "D1":
 
-    df = pd.read_csv("c61_whole_OT.csv")
-
-elif cluster == "D2":
-
-    df = pd.read_csv("c62_whole_OT.csv")
-
-else:
-
-    df = pd.read_csv("whole_ICj.csv")
-# ---------------------------------------------------------
-# GENE LIST
-# ---------------------------------------------------------
-
-gene_list = sorted([
-    col for col in df.columns
-    if col not in [
-        "x",
-        "y",
-        "dorsal_y",
-        "section_num",
-        "brain_section_label"
-    ]
-])
-
-# ---------------------------------------------------------
-# GENE SELECTBOX
-# ---------------------------------------------------------
-
-gene = st.sidebar.selectbox(
-    "Gene",
-    gene_list,
-    index=gene_list.index("Oprm1")
-    if "Oprm1" in gene_list else 0
 )
 # =========================================================
 # SECTION NUMBER

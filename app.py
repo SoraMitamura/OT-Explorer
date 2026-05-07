@@ -79,6 +79,31 @@ cmax = st.sidebar.number_input(
 )
 
 # =========================================
+# SESSION STATE INIT
+# =========================================
+
+if "selected_index" not in st.session_state:
+    st.session_state.selected_index = None
+
+# =========================================
+# RESET SELECTION WHEN STATE CHANGES
+# =========================================
+
+current_state = (
+    view_mode,
+    cluster
+)
+
+if "last_state" not in st.session_state:
+    st.session_state.last_state = current_state
+
+if current_state != st.session_state.last_state:
+
+    st.session_state.selected_index = None
+
+    st.session_state.last_state = current_state
+
+# =========================================
 # LOAD DATA
 # =========================================
 
@@ -219,7 +244,7 @@ fig.update_layout(
     template="simple_white",
 
     width=1400,
-    height=350,
+    height=500,
 
     margin=dict(
         l=0,
@@ -230,13 +255,6 @@ fig.update_layout(
 
     title=f"{gene} | {cluster} | {view_mode}"
 )
-
-# =========================================
-# SESSION STATE
-# =========================================
-
-if "selected_index" not in st.session_state:
-    st.session_state.selected_index = None
 
 # =========================================
 # TOP COLUMNS
@@ -278,9 +296,18 @@ with plot_col:
 
 if st.session_state.selected_index is not None:
 
-    selected_df = df.iloc[
-        st.session_state.selected_index
+    valid_index = [
+        i for i in st.session_state.selected_index
+        if i < len(df)
     ]
+
+    if len(valid_index) > 0:
+
+        selected_df = df.iloc[valid_index]
+
+    else:
+
+        selected_df = df
 
 else:
 

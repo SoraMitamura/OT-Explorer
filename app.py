@@ -10,6 +10,7 @@ from PIL import Image
 
 st.set_page_config(
     page_title="OT Scope",
+    layout="wide"
 )
 
 # =========================================================
@@ -49,7 +50,7 @@ section[data-testid="stSidebar"] {
 }
 
 /* =======================================================
-SIDEBAR COMPACT SPACING
+SIDEBAR SPACING
 ======================================================= */
 
 div[role="radiogroup"] > label {
@@ -76,14 +77,27 @@ h1, h2, h3, h4, h5, h6, p, label, div {
 METRICS
 ======================================================= */
 
-[data-testid="stMetricValue"] {
-    font-size: 20px;
-    color: white;
+div[data-testid="stMetric"] {
+
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+
+    margin-top: -8px !important;
+    margin-bottom: -8px !important;
 }
 
-[data-testid="stMetricLabel"] {
-    font-size: 12px;
-    color: #9ca3af;
+div[data-testid="stMetricLabel"] {
+
+    font-size: 11px !important;
+    color: #9ca3af !important;
+}
+
+div[data-testid="stMetricValue"] {
+
+    font-size: 16px !important;
+    line-height: 1.0 !important;
+
+    color: white !important;
 }
 
 /* =======================================================
@@ -157,15 +171,7 @@ CARD
 }
 
 /* =======================================================
-SLIDER
-======================================================= */
-
-.stSlider {
-    padding-top: 0px;
-}
-
-/* =======================================================
-REMOVE PADDING TOP
+REMOVE TOP PADDING
 ======================================================= */
 
 .block-container {
@@ -395,9 +401,9 @@ fig = px.scatter(
     template="plotly_dark"
 )
 
-# ---------------------------------------------------------
+# =========================================================
 # COLOR SCALE
-# ---------------------------------------------------------
+# =========================================================
 
 fig.update_coloraxes(
 
@@ -412,9 +418,9 @@ fig.update_coloraxes(
     )
 )
 
-# ---------------------------------------------------------
+# =========================================================
 # MARKER SIZE
-# ---------------------------------------------------------
+# =========================================================
 
 fig.update_traces(
     marker=dict(
@@ -422,9 +428,9 @@ fig.update_traces(
     )
 )
 
-# ---------------------------------------------------------
+# =========================================================
 # AXIS
-# ---------------------------------------------------------
+# =========================================================
 
 if view_mode == "Coronal":
 
@@ -448,9 +454,9 @@ else:
 fig.update_xaxes(visible=False)
 fig.update_yaxes(visible=False)
 
-# ---------------------------------------------------------
+# =========================================================
 # LAYOUT
-# ---------------------------------------------------------
+# =========================================================
 
 fig.update_layout(
 
@@ -588,39 +594,6 @@ with stat_col:
     """, unsafe_allow_html=True)
 
     # -----------------------------------------------------
-    # COMPACT METRIC CSS
-    # -----------------------------------------------------
-
-    st.markdown("""
-    <style>
-
-    div[data-testid="stMetric"] {
-
-        padding-top: 0px !important;
-        padding-bottom: 0px !important;
-
-        margin-top: -8px !important;
-        margin-bottom: -8px !important;
-    }
-
-    div[data-testid="stMetricLabel"] {
-
-        font-size: 11px !important;
-        color: #9ca3af !important;
-    }
-
-    div[data-testid="stMetricValue"] {
-
-        font-size: 16px !important;
-        line-height: 1.0 !important;
-
-        color: white !important;
-    }
-
-    </style>
-    """, unsafe_allow_html=True)
-
-    # -----------------------------------------------------
     # METRICS
     # -----------------------------------------------------
 
@@ -698,3 +671,53 @@ with stat_col:
     )
 
     st.markdown('</div>', unsafe_allow_html=True)
+
+# =========================================================
+# HISTOGRAM CARD
+# =========================================================
+
+st.markdown('<div class="card">', unsafe_allow_html=True)
+
+st.markdown("""
+<h2 style="
+font-size:30px;
+font-weight:700;
+margin-bottom:10px;
+margin-top:0px;
+">
+Histogram
+</h2>
+""", unsafe_allow_html=True)
+
+hist_fig = px.histogram(
+    selected_df,
+    x=gene,
+    nbins=50,
+    template="plotly_dark"
+)
+
+hist_fig.update_layout(
+
+    height=260,
+
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
+
+    font=dict(
+        color="white"
+    ),
+
+    margin=dict(
+        l=0,
+        r=0,
+        t=10,
+        b=0
+    )
+)
+
+st.plotly_chart(
+    hist_fig,
+    use_container_width=True
+)
+
+st.markdown('</div>', unsafe_allow_html=True)

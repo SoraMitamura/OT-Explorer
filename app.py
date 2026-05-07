@@ -348,7 +348,7 @@ df["section_num"] = (
 # DORSAL MAP
 # =========================================================
 
-sections_plot = [55,54,52,51,50,49,48,47]
+sections_plot = [55,54,53,52,51,50,49,48,47]
 
 section_map = {
     s:i for i,s in enumerate(sections_plot)

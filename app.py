@@ -473,7 +473,7 @@ fig.update_layout(
         l=0,
         r=0,
         t=20,
-        b=0
+        b=-40
     )
 )
 

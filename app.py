@@ -285,7 +285,7 @@ gene_list = sorted([
         "z",
         "dorsal_y",
         "section_num",
-        "cell_label
+        "cell_label",
         "brain_section_label"
     ]
 ])

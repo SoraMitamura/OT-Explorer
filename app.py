@@ -100,7 +100,6 @@ if "last_state" not in st.session_state:
 if current_state != st.session_state.last_state:
 
     st.session_state.selected_index = None
-
     st.session_state.last_state = current_state
 
 # =========================================

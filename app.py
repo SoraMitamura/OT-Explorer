@@ -315,12 +315,12 @@ point_size = st.sidebar.slider(
 # COLOR RANGE
 # ---------------------------------------------------------
 
-cmin = st.sidebar.number_input(
-    "Min",
-    value=0.0,
-    step=0.1,
-    format="%.1f"
-)
+#cmin = st.sidebar.number_input(
+#    "Min",
+#    value=0.0,
+#    step=0.1,
+#    format="%.1f"
+#)
 
 cmax = st.sidebar.number_input(
     "Max",

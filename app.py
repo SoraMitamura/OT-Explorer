@@ -257,6 +257,18 @@ fig.update_layout(
 )
 
 # =========================================
+# CLEAR SELECTION BUTTON
+# =========================================
+
+clear_selection = st.button(
+    "Clear Selection"
+)
+
+if clear_selection:
+
+    st.session_state.selected_index = None
+
+# =========================================
 # TOP COLUMNS
 # =========================================
 
@@ -267,14 +279,6 @@ plot_col, stat_col = st.columns([5,1])
 # =========================================
 
 with plot_col:
-
-    clear_selection = st.button(
-        "Clear Selection"
-    )
-
-    if clear_selection:
-
-        st.session_state.selected_index = None
 
     clicked = st.plotly_chart(
         fig,
@@ -351,8 +355,6 @@ with stat_col:
         "Max",
         round(expr.max(), 3)
     )
-
-
 
 # =========================================
 # HISTOGRAM

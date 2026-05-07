@@ -301,6 +301,21 @@ gene = st.sidebar.selectbox(
     if "Oprm1" in gene_list else 0
 )
 # =========================================================
+# CORONAL MODE
+# =========================================================
+
+if view_mode == "Coronal":
+
+    section = st.sidebar.number_input(
+        "Section",
+        min_value=int(df["section_num"].min()),
+        max_value=int(df["section_num"].max()),
+        value=int(df["section_num"].max()),
+        step=1
+    )
+
+    df = df[df["section_num"] == section]
+# =========================================================
 # SECTION NUMBER
 # =========================================================
 
@@ -386,21 +401,7 @@ df["dorsal_y"] += (
     np.random.rand(len(df)) - 0.5
 ) * 2 * jitter
 
-# =========================================================
-# CORONAL MODE
-# =========================================================
 
-if view_mode == "Coronal":
-
-    section = st.sidebar.number_input(
-        "Section",
-        min_value=int(df["section_num"].min()),
-        max_value=int(df["section_num"].max()),
-        value=int(df["section_num"].max()),
-        step=1
-    )
-
-    df = df[df["section_num"] == section]
 
 # =========================================================
 # RESET INDEX

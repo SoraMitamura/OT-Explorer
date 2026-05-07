@@ -106,7 +106,7 @@ point_size = st.sidebar.slider(
     "Point size",
     1,
     10,
-    3
+    5
 )
 
 # ----- Color scale -----

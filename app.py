@@ -267,15 +267,14 @@ plot_col, stat_col = st.columns([5,1])
 # =========================================
 
 with plot_col:
-clear_selection = st.button(
-    "Clear Selection"
-)
 
-if (
-    not clear_selection
-    and clicked.selection
+    clear_selection = st.button(
+        "Clear Selection"
+    )
 
-    st.session_state.selected_index = None
+    if clear_selection:
+
+        st.session_state.selected_index = None
     clicked = st.plotly_chart(
         fig,
         key="main_plot",

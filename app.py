@@ -352,7 +352,7 @@ cmin = 0;
 cmax = st.sidebar.number_input(
     "Max",
     value=5.0,
-    step=0.1,
+    step=0.5,
     format="%.1f"
 )
 

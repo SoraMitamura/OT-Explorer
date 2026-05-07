@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
-
+from PIL import Image
 # =========================================
 # PAGE
 # =========================================
@@ -75,8 +75,13 @@ st.markdown("""
 # =========================================
 # SIDEBAR
 # =========================================
+logo = Image.open("otscope_logo.png")
 
-st.sidebar.header("Controls")
+st.sidebar.image(
+    logo,
+    use_container_width=True
+)
+
 
 # ----- View mode -----
 

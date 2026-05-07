@@ -489,9 +489,11 @@ fig.update_layout(
 
 st.markdown("""
 <h1 style="
-font-size:64px;
-font-weight:800;
-margin-bottom:20px;
+font-size:48px;
+font-weight:750;
+margin-bottom:10px;
+margin-top:0px;
+line-height:1.0;
 ">
 OT Scope
 </h1>
@@ -570,15 +572,64 @@ with stat_col:
 
     st.markdown('<div class="card">', unsafe_allow_html=True)
 
+    # -----------------------------------------------------
+    # STATISTICS TITLE
+    # -----------------------------------------------------
+
     st.markdown("""
     <h2 style="
-    font-size:42px;
-    font-weight:700;
-    margin-bottom:20px;
+    font-size:24px;
+    font-weight:650;
+    margin-top:0px;
+    margin-bottom:10px;
+    line-height:1.1;
     ">
     Statistics
     </h2>
     """, unsafe_allow_html=True)
+
+    # -----------------------------------------------------
+    # COMPACT METRIC CSS
+    # -----------------------------------------------------
+
+    st.markdown("""
+    <style>
+
+    /* metric block */
+
+    div[data-testid="stMetric"] {
+
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+
+        margin-top: -8px !important;
+        margin-bottom: -8px !important;
+    }
+
+    /* metric label */
+
+    div[data-testid="stMetricLabel"] {
+
+        font-size: 11px !important;
+        color: #9ca3af !important;
+    }
+
+    /* metric value */
+
+    div[data-testid="stMetricValue"] {
+
+        font-size: 16px !important;
+        line-height: 1.0 !important;
+
+        color: white !important;
+    }
+
+    </style>
+    """, unsafe_allow_html=True)
+
+    # -----------------------------------------------------
+    # METRICS
+    # -----------------------------------------------------
 
     expr = selected_df[gene]
 
@@ -602,8 +653,56 @@ with stat_col:
         round(expr.max(), 3)
     )
 
-    st.markdown("<br>", unsafe_allow_html=True)
+    # -----------------------------------------------------
+    # SMALL GAP
+    # -----------------------------------------------------
 
+    st.markdown(
+        "<div style='height:10px'></div>",
+        unsafe_allow_html=True
+    )
+
+    # -----------------------------------------------------
+    # CLEAR BUTTON
+    # -----------------------------------------------------
+
+    clear_selection = st.button(
+        "Clear Selection"
+    )
+
+    if clear_selection:
+
+        st.session_state.selected_index = None
+
+        st.session_state.plot_key += 1
+
+        st.rerun()
+
+    # -----------------------------------------------------
+    # SMALL GAP
+    # -----------------------------------------------------
+
+    st.markdown(
+        "<div style='height:6px'></div>",
+        unsafe_allow_html=True
+    )
+
+    # -----------------------------------------------------
+    # DOWNLOAD CSV
+    # -----------------------------------------------------
+
+    csv = selected_df.to_csv(
+        index=False
+    ).encode("utf-8")
+
+    st.download_button(
+        label="Download Selected CSV",
+        data=csv,
+        file_name=f"{gene}_{cluster}_selected.csv",
+        mime="text/csv"
+    )
+
+    st.markdown('</div>', unsafe_allow_html=True)
     # -----------------------------------------------------
     # CLEAR BUTTON
     # -----------------------------------------------------

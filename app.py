@@ -300,6 +300,17 @@ gene = st.sidebar.selectbox(
     index=gene_list.index("Oprm1")
     if "Oprm1" in gene_list else 0
 )
+# =========================================================
+# SECTION NUMBER
+# =========================================================
+
+df["section_num"] = (
+    df["brain_section_label"]
+    .astype(str)
+    .str.split(".")
+    .str[-1]
+    .astype(int)
+)
 
 # ---------------------------------------------------------
 # POINT SIZE
@@ -352,17 +363,6 @@ if current_state != st.session_state.last_state:
 
 
 
-# =========================================================
-# SECTION NUMBER
-# =========================================================
-
-df["section_num"] = (
-    df["brain_section_label"]
-    .astype(str)
-    .str.split(".")
-    .str[-1]
-    .astype(int)
-)
 
 # =========================================================
 # DORSAL MAP

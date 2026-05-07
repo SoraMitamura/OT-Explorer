@@ -473,7 +473,7 @@ fig.update_layout(
         l=0,
         r=0,
         t=20,
-        b=-40
+        b=0
     )
 )
 
@@ -489,18 +489,19 @@ plot_col, stat_col = st.columns([5.5,1.3])
 
 with plot_col:
 
-    st.markdown(f"""
+    st.markdown("""
     <h2 style="
-    font-size:22px;
+    font-size:26px;
     font-weight:700;
-    margin-top:0px;
-    margin-bottom:-10px;
+
+    margin-top:-40px;
+    margin-bottom:-25px;
+
     padding-left:5px;
-    line-height:1.0;
     ">
-    {gene} | {cluster} | {view_mode}
+    Histogram
     </h2>
-    """, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
     clicked = st.plotly_chart(
         fig,

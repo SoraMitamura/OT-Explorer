@@ -99,13 +99,13 @@ METRICS
 
 div[data-testid="stMetricLabel"] {
 
-    font-size: 22px !important;
+    font-size: 25px !important;
     color: #9ca3af !important;
 }
 
 div[data-testid="stMetricLabel"] {
 
-    font-size: 22px !important;
+    font-size: 25px !important;
     color: #9ca3af !important;
 }
 

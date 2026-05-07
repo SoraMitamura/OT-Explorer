@@ -47,7 +47,8 @@ view_mode = st.sidebar.radio(
 
 cluster = st.sidebar.selectbox(
     "Cluster",
-    ["D1", "D2"]
+    ["D1", "D2", "ICj"],
+    index=0
 )
 
 # ----- Gene -----
@@ -113,9 +114,16 @@ if current_state != st.session_state.last_state:
 # =========================================
 
 if cluster == "D1":
+
     df = pd.read_csv("c61_whole_OT.csv")
-else:
+
+elif cluster == "D2":
+
     df = pd.read_csv("c62_whole_OT.csv")
+
+else:
+
+    df = pd.read_csv("whole_ICj.csv")
 
 # =========================================
 # SECTION NUMBER

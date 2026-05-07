@@ -207,11 +207,11 @@ REMOVE TOP PADDING
 # SIZE PARAMETERS
 # =========================================================
 
-coronal_width = 1200
-coronal_height = 620
+coronal_width = 900
+coronal_height = 440
 
-dorsal_width = 1200
-dorsal_height = 620
+dorsal_width = 900
+dorsal_height = 440
 
 gap = 0.24
 jitter = 0.10

@@ -493,12 +493,9 @@ with plot_col:
     <h2 style="
     font-size:22px;
     font-weight:700;
-
     margin-top:0px;
     margin-bottom:-10px;
-
     padding-left:5px;
-
     line-height:1.0;
     ">
     {gene} | {cluster} | {view_mode}
@@ -653,10 +650,8 @@ st.markdown("""
 <h2 style="
 font-size:26px;
 font-weight:700;
-
 margin-top:0px;
 margin-bottom:-10px;
-
 padding-left:5px;
 ">
 Histogram

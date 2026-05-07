@@ -167,7 +167,7 @@ CARD
 
     backdrop-filter: blur(12px);
 
-    margin-bottom: 20px;
+    margin-bottom: 6px;
 }
 
 /* =======================================================
@@ -477,32 +477,8 @@ fig.update_layout(
         b=0
     ),
 
-    title=dict(
-        text=f"{gene} | {cluster} | {view_mode}",
-        x=0.02,
-        y=0.96,
-        font=dict(
-            size=22,
-            color="white"
-        )
-    )
 )
 
-# =========================================================
-# TITLE
-# =========================================================
-
-st.markdown("""
-<h1 style="
-font-size:48px;
-font-weight:750;
-margin-bottom:10px;
-margin-top:0px;
-line-height:1.0;
-">
-OT Scope
-</h1>
-""", unsafe_allow_html=True)
 
 # =========================================================
 # MAIN LAYOUT
@@ -516,7 +492,19 @@ plot_col, stat_col = st.columns([5.5,1.3])
 
 with plot_col:
 
-    st.markdown('<div class="card">', unsafe_allow_html=True)
+    st.markdown('<div class="card">',
+                unsafe_allow_html=True)
+
+    st.markdown(f"""
+    <h2 style="
+    font-size:22px;
+    font-weight:700;
+    margin-top:0px;
+    margin-bottom:10px;
+    ">
+    {gene} | {cluster} | {view_mode}
+    </h2>
+    """, unsafe_allow_html=True)
 
     clicked = st.plotly_chart(
         fig,

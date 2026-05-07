@@ -489,19 +489,21 @@ plot_col, stat_col = st.columns([5.5,1.3])
 
 with plot_col:
 
-    st.markdown("""
-    <h2 style="
-    font-size:26px;
-    font-weight:700;
-
-    margin-top:-40px;
-    margin-bottom:-25px;
-
-    padding-left:5px;
-    ">
-    Histogram
-    </h2>
-""", unsafe_allow_html=True)
+    st.markdown(
+        f"""
+        <h2 style="
+        font-size:22px;
+        font-weight:700;
+        margin-top:0px;
+        margin-bottom:-10px;
+        padding-left:5px;
+        line-height:1.0;
+        ">
+        {gene} | {cluster} | {view_mode}
+        </h2>
+        """,
+        unsafe_allow_html=True
+    )
 
     clicked = st.plotly_chart(
         fig,
@@ -528,7 +530,6 @@ with plot_col:
             p["point_index"]
             for p in points
         ]
-
 # =========================================================
 # SELECTED DATA
 # =========================================================

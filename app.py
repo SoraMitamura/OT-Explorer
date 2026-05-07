@@ -494,7 +494,7 @@ with plot_col:
         <h2 style="
         font-size:22px;
         font-weight:700;
-        margin-top:0px;
+        margin-top:20px;
         margin-bottom:-10px;
         padding-left:5px;
         line-height:1.0;
@@ -565,7 +565,7 @@ with stat_col:
     <h2 style="
     font-size:24px;
     font-weight:650;
-    margin-top:0px;
+    margin-top:20px;
     margin-bottom:8px;
     line-height:1.1;
     ">

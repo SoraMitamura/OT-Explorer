@@ -15,6 +15,48 @@ st.set_page_config(
 st.title("OT Explorer")
 
 # =========================================
+# IMPORTANT SIZE PARAMETERS
+# =========================================
+#
+# coronal_width
+#   → coronal view の横幅
+#
+# coronal_height
+#   → coronal view の縦幅
+#
+# dorsal_width
+#   → dorsal view の横幅
+#
+# dorsal_height
+#   → dorsal view の縦幅
+#
+# gap
+#   → dorsal section 間隔
+#
+# jitter
+#   → dorsal section の太さ
+#
+# =========================================
+
+# ----- Coronal size -----
+
+coronal_width = 1400
+coronal_height = 500
+
+# ----- Dorsal size -----
+
+dorsal_width = 1400
+dorsal_height = 500
+
+# ----- Dorsal spacing -----
+
+gap = 0.24
+
+# ----- Dorsal thickness -----
+
+jitter = 0.1
+
+# =========================================
 # SMALLER METRICS
 # =========================================
 
@@ -147,9 +189,6 @@ section_map = {
     s:i for i,s in enumerate(sections_plot)
 }
 
-gap = 0.24
-jitter = 0.1
-
 df["dorsal_y"] = (
     df["section_num"]
     .map(section_map)
@@ -225,24 +264,45 @@ fig = px.scatter(
     color_continuous_scale="Viridis"
 )
 
-# ----- Color scale -----
+# =========================================
+# COLOR SCALE
+# =========================================
 
 fig.update_coloraxes(
     cmin=cmin,
     cmax=cmax
 )
 
-# ----- Marker size -----
+# =========================================
+# MARKER SIZE
+# =========================================
 
 fig.update_traces(
     marker=dict(size=point_size)
 )
 
-# ----- Reverse y axis -----
+# =========================================
+# AXIS MODE
+# =========================================
 
-fig.update_yaxes(
-    autorange="reversed"
-)
+if view_mode == "Coronal":
+
+    fig.update_yaxes(
+        autorange="reversed",
+        scaleanchor="x"
+    )
+
+    fig_width = coronal_width
+    fig_height = coronal_height
+
+else:
+
+    fig.update_yaxes(
+        autorange="reversed"
+    )
+
+    fig_width = dorsal_width
+    fig_height = dorsal_height
 
 # ----- Hide axes -----
 
@@ -256,8 +316,8 @@ fig.update_yaxes(visible=False)
 fig.update_layout(
     template="simple_white",
 
-    width=1400,
-    height=500,
+    width=fig_width,
+    height=fig_height,
 
     margin=dict(
         l=0,

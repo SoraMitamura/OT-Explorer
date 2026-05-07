@@ -9,7 +9,7 @@ from PIL import Image
 # =========================================================
 
 st.set_page_config(
-
+    page_title="OT Scope",
     layout="wide"
 )
 
@@ -38,6 +38,7 @@ SIDEBAR
 ======================================================= */
 
 section[data-testid="stSidebar"] {
+
     background: linear-gradient(
         180deg,
         #09101f 0%,
@@ -152,7 +153,7 @@ DOWNLOAD BUTTON
 }
 
 /* =======================================================
-CARD
+STATISTICS CARD
 ======================================================= */
 
 .card {
@@ -163,11 +164,9 @@ CARD
 
     border-radius: 24px;
 
-    padding: 24px;
+    padding: 20px;
 
     backdrop-filter: blur(12px);
-
-    margin-bottom: 6px;
 }
 
 /* =======================================================
@@ -473,12 +472,10 @@ fig.update_layout(
     margin=dict(
         l=0,
         r=0,
-        t=80,
+        t=20,
         b=0
-    ),
-
+    )
 )
-
 
 # =========================================================
 # MAIN LAYOUT
@@ -487,20 +484,22 @@ fig.update_layout(
 plot_col, stat_col = st.columns([5.5,1.3])
 
 # =========================================================
-# PLOT CARD
+# PLOT
 # =========================================================
 
 with plot_col:
-
-    st.markdown('<div class="card">',
-                unsafe_allow_html=True)
 
     st.markdown(f"""
     <h2 style="
     font-size:22px;
     font-weight:700;
+
     margin-top:0px;
-    margin-bottom:10px;
+    margin-bottom:-10px;
+
+    padding-left:5px;
+
+    line-height:1.0;
     ">
     {gene} | {cluster} | {view_mode}
     </h2>
@@ -513,8 +512,6 @@ with plot_col:
         selection_mode=("lasso", "box"),
         use_container_width=True
     )
-
-    st.markdown('</div>', unsafe_allow_html=True)
 
     # -----------------------------------------------------
     # UPDATE SELECTION
@@ -565,10 +562,6 @@ with stat_col:
 
     st.markdown('<div class="card">', unsafe_allow_html=True)
 
-    # -----------------------------------------------------
-    # STATISTICS TITLE
-    # -----------------------------------------------------
-
     st.markdown("""
     <h2 style="
     font-size:24px;
@@ -607,10 +600,6 @@ with stat_col:
         round(expr.max(), 3)
     )
 
-    # -----------------------------------------------------
-    # GAP
-    # -----------------------------------------------------
-
     st.markdown(
         "<div style='height:10px'></div>",
         unsafe_allow_html=True
@@ -632,10 +621,6 @@ with stat_col:
         st.session_state.plot_key += 1
 
         st.rerun()
-
-    # -----------------------------------------------------
-    # GAP
-    # -----------------------------------------------------
 
     st.markdown(
         "<div style='height:6px'></div>",
@@ -661,17 +646,18 @@ with stat_col:
     st.markdown('</div>', unsafe_allow_html=True)
 
 # =========================================================
-# HISTOGRAM CARD
+# HISTOGRAM
 # =========================================================
-
-st.markdown('<div class="card">', unsafe_allow_html=True)
 
 st.markdown("""
 <h2 style="
-font-size:30px;
+font-size:26px;
 font-weight:700;
-margin-bottom:10px;
+
 margin-top:0px;
+margin-bottom:-10px;
+
+padding-left:5px;
 ">
 Histogram
 </h2>
@@ -707,5 +693,3 @@ st.plotly_chart(
     hist_fig,
     use_container_width=True
 )
-
-st.markdown('</div>', unsafe_allow_html=True)

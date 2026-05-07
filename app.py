@@ -361,9 +361,9 @@ with plot_col:
         fig,
         key=f"main_plot_{st.session_state.plot_key}",
         on_select="rerun",
-        selection_mode=("lasso", "box")
+        selection_mode=("lasso", "box"),
+        use_container_width=False
     )
-
     # ----- Update selection -----
 
     if (

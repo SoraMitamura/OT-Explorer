@@ -26,7 +26,6 @@ div[data-baseweb="select"] * {
     color: black !important;
 }
 
-</style>
 
 /* =======================================================
 GLOBAL

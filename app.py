@@ -40,12 +40,12 @@ st.title("OT Explorer")
 
 # ----- Coronal size -----
 
-coronal_width = 1400
+coronal_width = 1100
 coronal_height = 500
 
 # ----- Dorsal size -----
 
-dorsal_width = 400
+dorsal_width = 500
 dorsal_height = 500
 
 # ----- Dorsal spacing -----

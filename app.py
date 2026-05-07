@@ -20,15 +20,21 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* dropdown menu text */
+/* selected value */
+
+div[data-baseweb="select"] div {
+    color: black !important;
+}
+
+/* dropdown menu items */
 
 ul[role="listbox"] li {
     color: black !important;
 }
 
-/* selected item text */
+/* dropdown text */
 
-div[data-baseweb="select"] span {
+div[data-baseweb="popover"] * {
     color: black !important;
 }
 

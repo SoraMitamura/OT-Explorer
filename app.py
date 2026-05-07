@@ -349,7 +349,7 @@ if clear_selection:
 # TOP COLUMNS
 # =========================================
 
-plot_col, stat_col = st.columns([5,1])
+plot_col, stat_col = st.columns([3,1])
 
 # =========================================
 # PLOT PANEL

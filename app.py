@@ -45,7 +45,7 @@ coronal_height = 500
 
 # ----- Dorsal size -----
 
-dorsal_width = 500
+dorsal_width = 600
 dorsal_height = 500
 
 # ----- Dorsal spacing -----

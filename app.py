@@ -763,7 +763,7 @@ st.markdown(
     font-size:26px;
     font-weight:700;
     margin-top:-160px;
-    margin-bottom:-100px;
+    margin-bottom:-60px;
     padding-left:5px;
     ">
     Histogram

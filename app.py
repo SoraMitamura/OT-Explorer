@@ -771,18 +771,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.markdown("""
-<style>
-div[data-testid="stPlotlyChart"] {
-    margin-top: -120px;
-}
-</style>
-""", unsafe_allow_html=True)
-
-st.plotly_chart(
-    hist_fig,
-    use_container_width=False
-)
 # ---------------------------------------------------------
 # HISTOGRAM FIGURE
 # ---------------------------------------------------------
@@ -851,6 +839,18 @@ st.markdown(
     "<div style='margin-top:-180px'></div>",
     unsafe_allow_html=True
 )
+st.plotly_chart(
+    hist_fig,
+    use_container_width=False
+)
+st.markdown("""
+<style>
+div[data-testid="stPlotlyChart"] {
+    margin-top: -120px;
+}
+</style>
+""", unsafe_allow_html=True)
+
 st.plotly_chart(
     hist_fig,
     use_container_width=False

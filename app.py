@@ -838,7 +838,7 @@ hist_fig.update_yaxes(
 # ---------------------------------------------------------
 
 st.markdown(
-    "<div style='margin-top:-80px'>",
+    "<div style='margin-top:-180px'>",
     unsafe_allow_html=True
 )
 

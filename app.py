@@ -792,7 +792,6 @@ st.markdown(
     "</div>",
     unsafe_allow_html=True
 )
-)
 st.plotly_chart(
     hist_fig,
     use_container_width=False

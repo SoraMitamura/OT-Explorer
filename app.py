@@ -163,7 +163,31 @@ BUTTONS
 ======================================================= */
 
 .stButton button {
+div.stLinkButton a {
 
+    background-color: #111827 !important;
+
+    color: white !important;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 14px;
+
+    padding: 10px 16px;
+
+    text-decoration: none;
+
+    display: block;
+
+    width: 70%;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+
+    transition: 0.2s;
+}
     background: #111827;
 
     border: 1px solid rgba(255,255,255,0.08);

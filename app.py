@@ -526,7 +526,7 @@ fig.update_layout(
 # MAIN LAYOUT
 # =========================================================
 
-plot_col, stat_col = st.columns([5.5,1.3])
+plot_col, stat_col = st.columns([4.5,1.5])
 
 # =========================================================
 # PLOT

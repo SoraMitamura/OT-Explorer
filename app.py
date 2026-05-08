@@ -603,7 +603,10 @@ else:
 # =========================================================
 
 with stat_col:
-
+    st.markdown(
+    "<div style='height:40px'></div>",
+    unsafe_allow_html=True
+    )
     st.link_button(
         "What is OT?",
         "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
@@ -614,7 +617,7 @@ with stat_col:
     <h2 style="
     font-size:24px;
     font-weight:650;
-    margin-top:100px;
+    margin-top:40px;
     margin-bottom:8px;
     line-height:1.1;
     ">

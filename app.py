@@ -741,8 +741,6 @@ hist_fig.update_layout(
 
     width=700,
     height=220,
-
-    ...
 )
 hist_fig.update_xaxes(
     tickfont=dict(size=18)

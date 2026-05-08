@@ -762,7 +762,7 @@ st.markdown(
     <h2 style="
     font-size:28px;
     font-weight:700;
-    margin-top:-60px;
+    margin-top:-100px;
     margin-bottom:-25px;
     padding-left:5px;
     ">
@@ -807,7 +807,7 @@ st.plotly_chart(
 )
 hist_fig.update_layout(
 
-    width=300,
+    width=400,
     height=220,
 )
 hist_fig.update_xaxes(

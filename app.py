@@ -179,7 +179,7 @@ div.stLinkButton a {
 
     display: block;
 
-    width: 70%;
+    width: 50%;
 
     margin-left: auto;
     margin-right: auto;
@@ -804,7 +804,7 @@ st.plotly_chart(
 )
 hist_fig.update_layout(
 
-    width=700,
+    width=500,
     height=220,
 )
 hist_fig.update_xaxes(

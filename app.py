@@ -781,6 +781,9 @@ hist_fig = px.histogram(
 
 hist_fig.update_layout(
 
+    autosize=False,
+
+    width=500,
     height=220,
 
     paper_bgcolor="rgba(0,0,0,0)",

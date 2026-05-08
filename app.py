@@ -771,12 +771,13 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 hist_fig = px.histogram(
     ...
 )
 
-...
+hist_fig.update_layout(
+    ...
+)
 
 st.markdown(
     "<div style='margin-top:-80px'>",

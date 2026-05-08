@@ -455,7 +455,7 @@ fig.update_coloraxes(
     cmax=cmax,
 
     colorbar=dict(
-        title=gene,
+        title="log2(CPM+1)",
         thickness=20,
         title_font=dict(size=18),
         tickfont=dict(size=14)
@@ -741,4 +741,10 @@ hist_fig.update_layout(
 
     width=700,
     height=220,
+)
+hist_fig.update_xaxes(
+    title=dict(
+        text="Expression (log2(CPM+1))",
+        font=dict(size=24)
+    )
 )

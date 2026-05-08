@@ -735,5 +735,19 @@ hist_fig.update_layout(
 
 st.plotly_chart(
     hist_fig,
-    use_container_width=True
+    use_container_width=False
+)
+hist_fig.update_layout(
+
+    width=700,
+    height=220,
+
+    ...
+)
+hist_fig.update_xaxes(
+    tickfont=dict(size=18)
+)
+
+hist_fig.update_yaxes(
+    tickfont=dict(size=18)
 )

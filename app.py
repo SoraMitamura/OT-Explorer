@@ -771,18 +771,80 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+# ---------------------------------------------------------
+# HISTOGRAM FIGURE
+# ---------------------------------------------------------
+
 hist_fig = px.histogram(
-    ...
+    selected_df,
+    x=gene,
+    nbins=50,
+    template="plotly_dark"
 )
 
+# ---------------------------------------------------------
+# LAYOUT
+# ---------------------------------------------------------
+
 hist_fig.update_layout(
-    ...
+
+    autosize=False,
+
+    width=500,
+    height=220,
+
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
+
+    font=dict(
+        color="white"
+    ),
+
+    margin=dict(
+        l=0,
+        r=0,
+        t=0,
+        b=0
+    )
 )
+
+# ---------------------------------------------------------
+# AXES
+# ---------------------------------------------------------
+
+hist_fig.update_xaxes(
+
+    tickfont=dict(size=18),
+
+    title=dict(
+        text="Expression (log2(CPM+1))",
+        font=dict(size=24)
+    )
+)
+
+hist_fig.update_yaxes(
+
+    tickfont=dict(size=18),
+
+    title=dict(
+        text="Count",
+        font=dict(size=24)
+    )
+)
+
+# ---------------------------------------------------------
+# MOVE UP
+# ---------------------------------------------------------
 
 st.markdown(
     "<div style='margin-top:-80px'>",
     unsafe_allow_html=True
 )
+
+# ---------------------------------------------------------
+# PLOT
+# ---------------------------------------------------------
 
 st.plotly_chart(
     hist_fig,
@@ -792,19 +854,4 @@ st.plotly_chart(
 st.markdown(
     "</div>",
     unsafe_allow_html=True
-)
-st.plotly_chart(
-    hist_fig,
-    use_container_width=False
-)
-hist_fig.update_layout(
-
-    width=500,
-    height=220,
-)
-hist_fig.update_xaxes(
-    title=dict(
-        text="Expression (log2(CPM+1))",
-        font=dict(size=24)
-    )
 )

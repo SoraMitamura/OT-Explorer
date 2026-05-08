@@ -751,7 +751,10 @@ with stat_col:
         mime="text/csv",
         key="download_selected_csv"
     )
-
+    st.markdown(
+    "<div style='margin-bottom:-120px'></div>",
+    unsafe_allow_html=True
+　　)
     st.markdown('</div>', unsafe_allow_html=True)
 # =========================================================
 # HISTOGRAM

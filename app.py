@@ -760,9 +760,9 @@ with stat_col:
 st.markdown(
     f"""
     <h2 style="
-    font-size:28px;
+    font-size:26px;
     font-weight:700;
-    margin-top:-150px;
+    margin-top:-60px;
     margin-bottom:-25px;
     padding-left:5px;
     ">
@@ -773,36 +773,25 @@ st.markdown(
 )
 
 hist_fig = px.histogram(
-    selected_df,
-    x=gene,
-    nbins=50,
-    template="plotly_dark"
+    ...
 )
 
-hist_fig.update_layout(
+...
 
-    autosize=False,
-
-    width=500,
-    height=220,
-
-    paper_bgcolor="rgba(0,0,0,0)",
-    plot_bgcolor="rgba(0,0,0,0)",
-
-    font=dict(
-        color="white"
-    ),
-
-    margin=dict(
-        l=0,
-        r=0,
-        t=0,
-        b=0
-    )
-)
 st.markdown(
-    "<div style='margin-top:-100px'></div>",
-    unsafe_allow_html=False
+    "<div style='margin-top:-80px'>",
+    unsafe_allow_html=True
+)
+
+st.plotly_chart(
+    hist_fig,
+    use_container_width=False
+)
+
+st.markdown(
+    "</div>",
+    unsafe_allow_html=True
+)
 )
 st.plotly_chart(
     hist_fig,

@@ -813,45 +813,24 @@ hist_fig.update_layout(
 # AXES
 # ---------------------------------------------------------
 
-hist_fig.update_xaxes(
+hist_fig.update_layout(
 
-    tickfont=dict(size=18),
+    autosize=False,
 
-    title=dict(
-        text="Expression (log2(CPM+1))",
-        font=dict(size=24)
+    width=500,
+    height=220,
+
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
+
+    font=dict(
+        color="white"
+    ),
+
+    margin=dict(
+        l=0,
+        r=0,
+        t=-120,
+        b=0
     )
-)
-
-hist_fig.update_yaxes(
-
-    tickfont=dict(size=18),
-
-    title=dict(
-        text="Count",
-        font=dict(size=24)
-    )
-)
-
-# ---------------------------------------------------------
-# MOVE UP
-# ---------------------------------------------------------
-
-st.markdown(
-    "<div style='margin-top:-250px'>",
-    unsafe_allow_html=True
-)
-
-# ---------------------------------------------------------
-# PLOT
-# ---------------------------------------------------------
-
-st.plotly_chart(
-    hist_fig,
-    use_container_width=False
-)
-
-st.markdown(
-    "</div>",
-    unsafe_allow_html=True
 )

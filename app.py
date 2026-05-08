@@ -605,7 +605,7 @@ else:
 with stat_col:
 
     st.link_button(
-        "Reference Paper",
+        "What is OT?",
         "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
         use_container_width=True
     )
@@ -614,7 +614,7 @@ with stat_col:
     <h2 style="
     font-size:24px;
     font-weight:650;
-    margin-top:40px;
+    margin-top:100px;
     margin-bottom:8px;
     line-height:1.1;
     ">

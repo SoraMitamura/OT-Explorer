@@ -802,7 +802,7 @@ hist_fig.update_layout(
 )
 st.markdown(
     "<div style='margin-top:-100px'></div>",
-    unsafe_allow_html=True
+    unsafe_allow_html=False
 )
 st.plotly_chart(
     hist_fig,

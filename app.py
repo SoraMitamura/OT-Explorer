@@ -743,9 +743,9 @@ hist_fig.update_layout(
     height=220,
 )
 hist_fig.update_xaxes(
-    tickfont=dict(size=24)
+    tickfont=dict(size=30)
 )
 
 hist_fig.update_yaxes(
-    tickfont=dict(size=24)
+    tickfont=dict(size=30)
 )

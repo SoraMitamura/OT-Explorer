@@ -762,8 +762,8 @@ st.markdown(
     <h2 style="
     font-size:26px;
     font-weight:700;
-    margin-top:-160px;
-    margin-bottom:-60px;
+    margin-top:-60px;
+    margin-bottom:-70px;
     padding-left:5px;
     ">
     Histogram
@@ -771,6 +771,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 # ---------------------------------------------------------
 # HISTOGRAM FIGURE
 # ---------------------------------------------------------
@@ -791,13 +792,14 @@ hist_fig.update_layout(
     autosize=False,
 
     width=500,
-    height=220,
+    height=180,
 
     paper_bgcolor="rgba(0,0,0,0)",
     plot_bgcolor="rgba(0,0,0,0)",
 
     font=dict(
-        color="white"
+        color="white",
+        size=18
     ),
 
     margin=dict(
@@ -833,25 +835,15 @@ hist_fig.update_yaxes(
 )
 
 # ---------------------------------------------------------
-# PLOT
+# HISTOGRAM CONTAINER
 # ---------------------------------------------------------
-st.markdown(
-    "<div style='margin-top:-180px'></div>",
-    unsafe_allow_html=True
-)
-st.plotly_chart(
-    hist_fig,
-    use_container_width=False
-)
-st.markdown("""
-<style>
-div[data-testid="stPlotlyChart"] {
-    margin-top: -120px;
-}
-</style>
-""", unsafe_allow_html=True)
 
-st.plotly_chart(
-    hist_fig,
-    use_container_width=False
-)
+hist_container = st.container()
+
+with hist_container:
+
+    st.plotly_chart(
+        hist_fig,
+        use_container_width=False,
+        config={"displayModeBar": False}
+    )

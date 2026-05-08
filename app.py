@@ -537,7 +537,7 @@ with plot_col:
     st.markdown(
         f"""
         <h2 style="
-        font-size:22px;
+        font-size:28px;
         font-weight:700;
         margin-top:40px;
         margin-bottom:-10px;

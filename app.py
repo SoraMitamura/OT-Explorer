@@ -804,7 +804,7 @@ st.plotly_chart(
 )
 hist_fig.update_layout(
 
-    width=500,
+    width=300,
     height=220,
 )
 hist_fig.update_xaxes(

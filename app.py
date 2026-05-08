@@ -668,7 +668,7 @@ with stat_col:
     st.link_button(
         "What is OT?",
         "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
-        use_container_width=True
+        use_container_width=False
     )
 
     st.markdown("""

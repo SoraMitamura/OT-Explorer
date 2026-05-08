@@ -836,7 +836,10 @@ hist_fig.update_yaxes(
 # ---------------------------------------------------------
 # PLOT
 # ---------------------------------------------------------
-
+st.markdown(
+    "<div style='margin-top:-80px'></div>",
+    unsafe_allow_html=True
+)
 st.plotly_chart(
     hist_fig,
     use_container_width=False

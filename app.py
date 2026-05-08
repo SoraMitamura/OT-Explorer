@@ -655,6 +655,100 @@ if st.session_state.selected_index is not None:
 else:
 
     selected_df = df
+# =========================================================
+# HISTOGRAM
+# =========================================================
+
+st.markdown(
+    f"""
+    <h2 style="
+    font-size:26px;
+    font-weight:700;
+    margin-top:-120px;
+    margin-bottom:-70px;
+    padding-left:5px;
+    ">
+    Histogram
+    </h2>
+    """,
+    unsafe_allow_html=True
+)
+
+# ---------------------------------------------------------
+# HISTOGRAM FIGURE
+# ---------------------------------------------------------
+
+hist_fig = px.histogram(
+    selected_df,
+    x=gene,
+    nbins=50,
+    template="plotly_dark"
+)
+
+# ---------------------------------------------------------
+# LAYOUT
+# ---------------------------------------------------------
+
+hist_fig.update_layout(
+
+    autosize=False,
+
+    width=500,
+    height=180,
+
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
+
+    font=dict(
+        color="white",
+        size=18
+    ),
+
+    margin=dict(
+        l=0,
+        r=0,
+        t=0,
+        b=0
+    )
+)
+
+# ---------------------------------------------------------
+# AXES
+# ---------------------------------------------------------
+
+hist_fig.update_xaxes(
+
+    tickfont=dict(size=18),
+
+    title=dict(
+        text="Expression (log2(CPM+1))",
+        font=dict(size=24)
+    )
+)
+
+hist_fig.update_yaxes(
+
+    tickfont=dict(size=18),
+
+    title=dict(
+        text="Count",
+        font=dict(size=24)
+    )
+)
+
+# ---------------------------------------------------------
+# HISTOGRAM CONTAINER
+# ---------------------------------------------------------
+
+hist_container = st.container()
+
+with hist_container:
+
+    st.plotly_chart(
+        hist_fig,
+        use_container_width=False,
+        config={"displayModeBar": False}
+    )
 
 # =========================================================
 # STATISTICS CARD
@@ -756,97 +850,3 @@ with stat_col:
     unsafe_allow_html=True
     )
     st.markdown('</div>', unsafe_allow_html=True)
-# =========================================================
-# HISTOGRAM
-# =========================================================
-
-st.markdown(
-    f"""
-    <h2 style="
-    font-size:26px;
-    font-weight:700;
-    margin-top:-120px;
-    margin-bottom:-70px;
-    padding-left:5px;
-    ">
-    Histogram
-    </h2>
-    """,
-    unsafe_allow_html=True
-)
-
-# ---------------------------------------------------------
-# HISTOGRAM FIGURE
-# ---------------------------------------------------------
-
-hist_fig = px.histogram(
-    selected_df,
-    x=gene,
-    nbins=50,
-    template="plotly_dark"
-)
-
-# ---------------------------------------------------------
-# LAYOUT
-# ---------------------------------------------------------
-
-hist_fig.update_layout(
-
-    autosize=False,
-
-    width=500,
-    height=180,
-
-    paper_bgcolor="rgba(0,0,0,0)",
-    plot_bgcolor="rgba(0,0,0,0)",
-
-    font=dict(
-        color="white",
-        size=18
-    ),
-
-    margin=dict(
-        l=0,
-        r=0,
-        t=0,
-        b=0
-    )
-)
-
-# ---------------------------------------------------------
-# AXES
-# ---------------------------------------------------------
-
-hist_fig.update_xaxes(
-
-    tickfont=dict(size=18),
-
-    title=dict(
-        text="Expression (log2(CPM+1))",
-        font=dict(size=24)
-    )
-)
-
-hist_fig.update_yaxes(
-
-    tickfont=dict(size=18),
-
-    title=dict(
-        text="Count",
-        font=dict(size=24)
-    )
-)
-
-# ---------------------------------------------------------
-# HISTOGRAM CONTAINER
-# ---------------------------------------------------------
-
-hist_container = st.container()
-
-with hist_container:
-
-    st.plotly_chart(
-        hist_fig,
-        use_container_width=False,
-        config={"displayModeBar": False}
-    )

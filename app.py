@@ -207,10 +207,10 @@ REMOVE TOP PADDING
 # SIZE PARAMETERS
 # =========================================================
 
-coronal_width = 500
+coronal_width = 600
 coronal_height = 440
 
-dorsal_width = 500
+dorsal_width = 600
 dorsal_height = 440
 
 gap = 0.24

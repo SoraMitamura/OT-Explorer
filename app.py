@@ -16,7 +16,41 @@ st.set_page_config(
 # =========================================================
 # CUSTOM CSS
 # =========================================================
+st.markdown("""
+<style>
 
+div.stLinkButton a {
+
+    background-color: #111827 !important;
+
+    color: white !important;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 14px;
+
+    padding: 10px 16px;
+
+    text-decoration: none;
+
+    display: inline-block;
+
+    width: 100%;
+
+    text-align: center;
+
+    transition: 0.2s;
+}
+
+div.stLinkButton a:hover {
+
+    border: 1px solid #22c55e;
+
+    color: white !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
 st.markdown("""
 <style>
 

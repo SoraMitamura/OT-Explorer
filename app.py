@@ -781,7 +781,7 @@ with stat_col:
 
         st.rerun()
 
-     st.markdown("""
+    st.markdown("""
     <h2 style="
     font-size:24px;
     font-weight:650;

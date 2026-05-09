@@ -392,23 +392,37 @@ df["section_num"] = (
 
 if view_mode == "Coronal":
 
-    available_sections = sorted(
-        df["section_num"].unique()
-    )
+    available_sections = [
+    40,41,42,43,
+    50,51,52,53,54,
+    60,61,62,63
+]
 
-    section = st.sidebar.selectbox(
-        "Section(21)",
-        available_sections,
-        index=available_sections.index(54),
+display_to_real = {
+    40:4,
+    41:41,
+    42:42,
+    43:43,
+    50:5,
+    51:51,
+    52:52,
+    53:53,
+    54:54,
+    60:6,
+    61:61,
+    62:62,
+    63:63
+}
 
-        format_func=lambda x:
-            "60" if x == 6 else
-            "50" if x == 5 else
-            str(x)
-    )
+section_display = st.sidebar.selectbox(
+    "Section",
+    available_sections,
+    index=available_sections.index(54)
+)
 
-    df = df[df["section_num"] == section]
+section = display_to_real[section_display]
 
+df = df[df["section_num"] == section]
 # ---------------------------------------------------------
 # POINT SIZE
 # ---------------------------------------------------------

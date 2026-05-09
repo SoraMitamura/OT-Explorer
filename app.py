@@ -845,14 +845,10 @@ with stat_col:
     )
     
 
-    st.markdown("""
-    <h2 style="
-    font-size:24px;
-    font-weight:650;
-    margin-top:-20px;
-    margin-bottom:8px;
-    line-height:1.1;
-    ">
+   st.markdown(
+    "<div style='height:20px'></div>",
+    unsafe_allow_html=True
+   )
 
     st.link_button(
         "What is OT?",

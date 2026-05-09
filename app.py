@@ -772,6 +772,27 @@ with stat_col:
         "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
         use_container_width=False
     )
+ # -----------------------------------------------------
+    # CLEAR BUTTON
+    # -----------------------------------------------------
+
+    clear_selection = st.button(
+        "Clear Selection",
+        key="clear_selection_button"
+    )
+
+    if clear_selection:
+
+        st.session_state.selected_index = None
+
+        st.session_state.plot_key += 1
+
+        st.rerun()
+
+    st.markdown(
+        "<div style='height:6px'></div>",
+        unsafe_allow_html=True
+    )
 
     st.markdown("""
     <h2 style="
@@ -816,28 +837,7 @@ with stat_col:
         unsafe_allow_html=True
     )
 
-    # -----------------------------------------------------
-    # CLEAR BUTTON
-    # -----------------------------------------------------
-
-    clear_selection = st.button(
-        "Clear Selection",
-        key="clear_selection_button"
-    )
-
-    if clear_selection:
-
-        st.session_state.selected_index = None
-
-        st.session_state.plot_key += 1
-
-        st.rerun()
-
-    st.markdown(
-        "<div style='height:6px'></div>",
-        unsafe_allow_html=True
-    )
-
+   
     # -----------------------------------------------------
     # DOWNLOAD CSV
     # -----------------------------------------------------

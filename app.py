@@ -302,7 +302,8 @@ st.sidebar.markdown("<br>", unsafe_allow_html=True)
 # ---------------------------------------------------------
 
 view_mode = st.sidebar.radio(
-    "View of Olfactory Tubercle",
+    "MERFISH with imputed gene by ABC atlas
+    View of Olfactory Tubercle",
     ["Coronal", "Pseudo-Dorsal"]
 )
 

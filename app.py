@@ -53,7 +53,7 @@ BUTTON SPACING
 ======================================================= */
 
 div.stButton {
-    margin-bottom: -12px;
+    margin-bottom: 0px;
 }
 
 div.stDownloadButton {

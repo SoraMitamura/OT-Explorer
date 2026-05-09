@@ -327,7 +327,7 @@ elif cluster == "D2":
 
     df = pd.read_csv("c62_whole_OT.csv")
 
-elif cluster == "Sema5a+D1":
+elif cluster == "Pdyn(+)Penk(+) D1":
 
     df = pd.read_csv("Pdyn(+)Penk(+) D1.csv")
 

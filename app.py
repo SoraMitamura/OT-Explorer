@@ -767,7 +767,14 @@ with stat_col:
  # -----------------------------------------------------
     # CLEAR BUTTON
     # -----------------------------------------------------
-
+    st.markdown("""
+    <h2 style="
+    font-size:24px;
+    font-weight:650;
+    margin-top:10px;
+    margin-bottom:8px;
+    line-height:1.1;
+    ">
     clear_selection = st.button(
         "Clear Selection",
         key="clear_selection_button"
@@ -781,14 +788,7 @@ with stat_col:
 
         st.rerun()
 
-    st.markdown("""
-    <h2 style="
-    font-size:24px;
-    font-weight:650;
-    margin-top:10px;
-    margin-bottom:8px;
-    line-height:1.1;
-    ">
+
 
     st.markdown("""
     <h2 style="

@@ -606,7 +606,7 @@ with plot_col:
         padding-left:5px;
         line-height:1.0;
         ">
-        {gene} | {cluster} | {view_mode}
+        {gene} | {cluster} | {view_mode} | "L<--->M"
         </h2>
         """,
         unsafe_allow_html=True

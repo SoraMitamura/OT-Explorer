@@ -824,7 +824,7 @@ with stat_col:
     )
 
     st.markdown(
-        "<div style='height:10px'></div>",
+        "<div style='height:-10px'></div>",
         unsafe_allow_html=True
     )
 
@@ -845,7 +845,7 @@ with stat_col:
     )
 
     st.markdown(
-        "<div style='height:0px'></div>",
+        "<div style='height:-10px'></div>",
         unsafe_allow_html=True
     )
 

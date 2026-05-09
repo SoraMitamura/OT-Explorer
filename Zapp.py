@@ -48,21 +48,7 @@ div.stLinkButton a:hover {
 
     color: white !important;
 }
-/* =======================================================
-BUTTON SPACING
-======================================================= */
 
-div.stButton {
-    margin-bottom: -12px;
-}
-
-div.stDownloadButton {
-    margin-bottom: -12px;
-}
-
-div.stLinkButton {
-    margin-bottom: -12px;
-}
 </style>
 """, unsafe_allow_html=True)
 st.markdown("""

@@ -621,7 +621,6 @@ with plot_col:
         key=f"main_plot_{st.session_state.plot_key}",
         on_select="rerun",
         selection_mode=("lasso", "box"),
-        use_container_width=False,
         config={"displayModeBar": False}
     )
 

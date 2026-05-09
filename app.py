@@ -268,7 +268,7 @@ REMOVE TOP PADDING
 coronal_width = 600
 coronal_height = 440
 
-dorsal_width = 600
+dorsal_width = 800
 dorsal_height = 440
 
 gap = 0.24

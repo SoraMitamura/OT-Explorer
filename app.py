@@ -831,7 +831,7 @@ with stat_col:
         st.rerun()
 
     st.markdown(
-        "<div style='margin-top:-60px'></div>",
+        "<div style='margin-top:-80px'></div>",
         unsafe_allow_html=True
     )
     st.link_button(

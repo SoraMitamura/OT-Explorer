@@ -312,7 +312,7 @@ view_mode = st.sidebar.radio(
 
 cluster = st.sidebar.selectbox(
     "Cluster",
-    ["D1", "D2", "ICj"],
+    ["D1", "D2", "Sema5a+D1", "ICj"],
     index=0
 )
 # =========================================================
@@ -326,6 +326,10 @@ if cluster == "D1":
 elif cluster == "D2":
 
     df = pd.read_csv("c62_whole_OT.csv")
+
+elif cluster == "Sema5a+D1":
+
+    df = pd.read_csv("c63_whole_OT.csv")
 
 else:
 

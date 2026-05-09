@@ -384,13 +384,15 @@ df["section_num"] = (
 
 if view_mode == "Coronal":
 
-    section = st.sidebar.number_input(
-    "Section",
-    min_value=int(df["section_num"].min()),
-    max_value=int(df["section_num"].max()),
-    value=54,
-    step=1
-)
+    available_sections = sorted(
+        [s for s in df["section_num"].unique() if s != 53]
+    )
+
+    section = st.sidebar.selectbox(
+        "Section",
+        available_sections,
+        index=available_sections.index(54)
+    )
 
     df = df[df["section_num"] == section]
 

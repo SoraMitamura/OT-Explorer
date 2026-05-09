@@ -925,7 +925,7 @@ with stat_col:
     border:1px solid rgba(255,255,255,0.08);
     width:70%;
     box-sizing:border-box;
-    margin-top:-10px;
+    margin-top:-20px;
     ">
     What is OT?
     </a>

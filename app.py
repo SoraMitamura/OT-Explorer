@@ -303,7 +303,7 @@ st.sidebar.markdown("<br>", unsafe_allow_html=True)
 
 view_mode = st.sidebar.radio(
     "View",
-    ["Coronal", "Dorsal"]
+    ["Coronal", "Pseudo-Dorsal"]
 )
 
 # ---------------------------------------------------------

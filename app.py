@@ -773,7 +773,7 @@ with stat_col:
 
     st.markdown("""
     <h2 style="
-    font-size:24px;
+    font-size:26px;
     font-weight:650;
     margin-top:20px;
     margin-bottom:8px;

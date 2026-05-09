@@ -514,9 +514,15 @@ df["dorsal_y"] += (
 
 df["x_shift"] = df["x"]
 
-df.loc[df["section_num"] == 46, "x_shift"] -= 0.2
 
-df.loc[df["section_num"] == 5, "x_shift"] -= 0.2
+df.loc[df["section_num"] == 44, "x_shift"] -= 0.1
+df.loc[df["section_num"] == 45, "x_shift"] -= 0.1
+df.loc[df["section_num"] == 46, "x_shift"] -= 0.3
+df.loc[df["section_num"] == 47, "x_shift"] -= 0.1
+df.loc[df["section_num"] == 48, "x_shift"] -= 0.1
+df.loc[df["section_num"] == 49, "x_shift"] -= 0.1
+
+df.loc[df["section_num"] == 5, "x_shift"] -= 0.3
 
 df.loc[df["section_num"] == 62, "x_shift"] -= -0.2
 

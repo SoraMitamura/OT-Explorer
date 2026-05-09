@@ -393,44 +393,44 @@ df["section_num"] = (
 if view_mode == "Coronal":
 
     available_sections = [
-    43,44,45,46,47,48,49,
-    50,51,52,53,54,55,56,57,58,59,
-    60,61,62,63
-]
+        43,44,45,46,47,48,49,
+        5,51,52,53,54,55,56,57,58,59,
+        6,61,62,63
+    ]
 
-display_to_real = {
-    43:43,
-    44:44,
-    45:45,
-    46:46,
-    47:47,
-    48:48,
-    49:49,
-    50:5,
-    51:51,
-    52:52,
-    53:53,
-    54:54,
-    55:55,
-    56:56,
-    57:57,
-    58:58,
-    59:59,
-    60:6,
-    61:61,
-    62:62,
-    63:63
-}
+    display_to_real = {
+        43:43,
+        44:44,
+        45:45,
+        46:46,
+        47:47,
+        48:48,
+        49:49,
+        5:50,
+        51:51,
+        52:52,
+        53:53,
+        54:54,
+        55:55,
+        56:56,
+        57:57,
+        58:58,
+        59:59,
+        6:60,
+        61:61,
+        62:62,
+        63:63
+    }
 
-section_display = st.sidebar.selectbox(
-    "Section",
-    available_sections,
-    index=available_sections.index(54)
-)
+    section_display = st.sidebar.selectbox(
+        "Section",
+        available_sections,
+        index=available_sections.index(54)
+    )
 
-section = display_to_real[section_display]
+    section = display_to_real[section_display]
 
-df = df[df["section_num"] == section]
+    df = df[df["section_num"] == section]
 # ---------------------------------------------------------
 # POINT SIZE
 # ---------------------------------------------------------
@@ -487,7 +487,11 @@ if current_state != st.session_state.last_state:
 # DORSAL MAP
 # =========================================================
 
-sections_plot = [43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63]
+sections_plot = [
+    43,44,45,46,47,48,49,
+    5,51,52,53,54,55,56,57,58,59,
+    6,61,62,63
+]
 
 section_map = {
     s:i for i,s in enumerate(sections_plot)

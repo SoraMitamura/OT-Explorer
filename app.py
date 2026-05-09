@@ -876,19 +876,19 @@ with stat_col:
         mime="text/csv",
         key="download_selected_csv"
     )
-    # -----------------------------------------------------
-    # LINK BUTTON
+ # -----------------------------------------------------
+    # LINK BUTTONS
     # -----------------------------------------------------
 
     st.markdown(
-        "<div style='height:20px'></div>",
+        "<div style='height:10px'></div>",
         unsafe_allow_html=True
     )
 
     # MERFISH only
     st.markdown("""
     <a href="https://ot-explorer-tgy2kpdwd2jhmfnmfyxdvc.streamlit.app/"
-    target="_self"
+    target="_blank"
     style="
     display:block;
     text-align:center;
@@ -898,23 +898,22 @@ with stat_col:
     color:white;
     text-decoration:none;
     border:1px solid rgba(255,255,255,0.08);
-    width:70%;
+    width:100%;
     box-sizing:border-box;
-    margin:auto;
     ">
     MERFISH only
     </a>
     """, unsafe_allow_html=True)
 
     st.markdown(
-        "<div style='height:20px'></div>",
+        "<div style='height:10px'></div>",
         unsafe_allow_html=True
     )
 
     # What is OT?
     st.markdown("""
     <a href="https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full"
-    target="_self"
+    target="_blank"
     style="
     display:block;
     text-align:center;
@@ -924,9 +923,8 @@ with stat_col:
     color:white;
     text-decoration:none;
     border:1px solid rgba(255,255,255,0.08);
-    width:70%;
+    width:100%;
     box-sizing:border-box;
-    margin:auto;
     ">
     What is OT?
     </a>

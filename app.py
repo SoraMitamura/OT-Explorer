@@ -876,21 +876,33 @@ with stat_col:
         mime="text/csv",
         key="download_selected_csv"
     )
-
     # -----------------------------------------------------
     # LINK BUTTON
     # -----------------------------------------------------
+
     st.markdown(
         "<div style='height:20px'></div>",
         unsafe_allow_html=True
     )
 
-    st.link_button(
-        "MERFISH only",
-        "https://ot-explorer-tgy2kpdwd2jhmfnmfyxdvc.streamlit.app/",
-        use_container_width=False
-    )
-    
+    st.markdown("""
+    <a href="https://ot-explorer-tgy2kpdwd2jhmfnmfyxdvc.streamlit.app/"
+    target="_self"
+    style="
+    display:block;
+    text-align:center;
+    padding:10px 16px;
+    border-radius:14px;
+    background:#111827;
+    color:white;
+    text-decoration:none;
+    border:1px solid rgba(255,255,255,0.08);
+    width:50%;
+    margin:auto;
+    ">
+    MERFISH only
+    </a>
+    """, unsafe_allow_html=True)
 
     st.markdown(
         "<div style='height:20px'></div>",
@@ -902,4 +914,3 @@ with stat_col:
         "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
         use_container_width=False
     )
-    

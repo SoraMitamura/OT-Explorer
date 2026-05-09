@@ -849,8 +849,6 @@ with stat_col:
     )
 
 
-    </h2>
-    """, unsafe_allow_html=True)
 
 
     

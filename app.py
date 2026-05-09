@@ -312,7 +312,7 @@ view_mode = st.sidebar.radio(
 
 cluster = st.sidebar.selectbox(
     "Cluster",
-    ["D1", "D2", "Pdyn+Penk+ D1", "ICj"],
+    ["D1", "D2", "Pdyn+Penk+ D1", "ICj", "Cap"],
     index=0
 )
 # =========================================================
@@ -327,13 +327,17 @@ elif cluster == "D2":
 
     df = pd.read_csv("c62_whole_OT.csv")
 
-elif cluster == "Pdyn+Penk+ D1":
+elif cluster == "Sema5a+D1":
 
-    df = pd.read_csv("c63_whole_OT.csv")
+    df = pd.read_csv("Pdyn+Penk+ D1.csv")
+
+elif cluster == "ICj":
+
+    df = pd.read_csv("whole_ICj.csv")
 
 else:
 
-    df = pd.read_csv("whole_ICj.csv")
+    df = pd.read_csv("c264_whole_Cap.csv")
 
 # ---------------------------------------------------------
 # GENE LIST

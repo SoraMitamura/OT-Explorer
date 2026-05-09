@@ -523,7 +523,7 @@ df.loc[df["section_num"] == 48, "x_shift"] -= 0.1
 df.loc[df["section_num"] == 49, "x_shift"] -= 0.1
 
 df.loc[df["section_num"] == 5, "x_shift"] -= 0.3
-
+df.loc[df["section_num"] == 61, "x_shift"] -= 0.1
 df.loc[df["section_num"] == 62, "x_shift"] -= -0.1
 
 df.loc[df["section_num"] == 63, "x_shift"] -= -0.1

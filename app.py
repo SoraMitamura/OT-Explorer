@@ -830,15 +830,30 @@ with stat_col:
 
         st.rerun()
 
-    st.markdown(
-        "<div style='margin-top:-80px'></div>",
-        unsafe_allow_html=True
-    )
+
+
+    st.markdown("""
+    <h2 style="
+    font-size:24px;
+    font-weight:650;
+    margin-top:20px;
+    margin-bottom:8px;
+    line-height:1.1;
+    ">
+
+    
     st.link_button(
         "What is OT?",
         "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
         use_container_width=False
     )
+
+
+    </h2>
+    """, unsafe_allow_html=True)
+
+
+    
 
     # -----------------------------------------------------
     # DOWNLOAD CSV

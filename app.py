@@ -897,7 +897,7 @@ background:#111827;
 color:white;
 text-decoration:none;
 border:1px solid rgba(255,255,255,0.08);
-width:100%;
+width:80%;
 box-sizing:border-box;
 ">
 MERFISH only

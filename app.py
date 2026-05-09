@@ -763,15 +763,7 @@ with hist_container:
 # =========================================================
 
 with stat_col:
-    st.markdown(
-    "<div style='height:60px'></div>",
-    unsafe_allow_html=True
-    )
-    st.link_button(
-        "What is OT?",
-        "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
-        use_container_width=False
-    )
+   
  # -----------------------------------------------------
     # CLEAR BUTTON
     # -----------------------------------------------------
@@ -854,7 +846,17 @@ with stat_col:
         key="download_selected_csv"
     )
     st.markdown(
-    "<div style='margin-bottom:-120px'></div>",
-    unsafe_allow_html=True
+        "<div style='margin-bottom:-120px'></div>",
+        unsafe_allow_html=True
     )
     st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown(
+        "<div style='height:60px'></div>",
+        unsafe_allow_html=True
+    )
+    st.link_button(
+        "What is OT?",
+        "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
+        use_container_width=False
+    )
+

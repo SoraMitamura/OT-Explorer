@@ -312,7 +312,7 @@ view_mode = st.sidebar.radio(
 
 cluster = st.sidebar.selectbox(
     "Cluster",
-    ["D1 neurons", "D2 neurons", "Pdyn+Penk+D1 neurons", "Islands of Caleja"],
+    ["D1 neurons", "D2 neurons", "Pdyn+Penk+ D1 neurons", "Islands of Caleja"],
     index=0
 )
 # =========================================================
@@ -327,7 +327,7 @@ elif cluster == "D2 neurons":
 
     df = pd.read_csv("c62_whole_OT.csv")
 
-elif cluster == "Pdyn+Penk+D1 neurons":
+elif cluster == "Pdyn+Penk+ D1 neurons":
 
     df = pd.read_csv("c63_whole_OT.csv")
 

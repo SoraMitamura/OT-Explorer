@@ -789,7 +789,7 @@ with stat_col:
     <h2 style="
     font-size:24px;
     font-weight:650;
-    margin-top:-30px;
+    margin-top:-20px;
     margin-bottom:8px;
     line-height:1.1;
     ">
@@ -843,11 +843,16 @@ with stat_col:
         mime="text/csv",
         key="download_selected_csv"
     )
+    
 
-    st.markdown(
-        "<div style='height:0px'></div>",
-        unsafe_allow_html=True
-    )
+    st.markdown("""
+    <h2 style="
+    font-size:24px;
+    font-weight:650;
+    margin-top:-20px;
+    margin-bottom:8px;
+    line-height:1.1;
+    ">
 
     st.link_button(
         "What is OT?",

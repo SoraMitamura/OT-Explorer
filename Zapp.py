@@ -392,9 +392,7 @@ df["section_num"] = (
 
 if view_mode == "Coronal":
 
-    available_sections = sorted(
-        [s for s in df["section_num"].unique() if s != 53]
-    )
+
 
     section = st.sidebar.selectbox(
         "Section(8)",

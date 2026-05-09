@@ -518,6 +518,10 @@ df.loc[df["section_num"] == 46, "x_shift"] -= 0.2
 
 df.loc[df["section_num"] == 5, "x_shift"] -= 0.2
 
+df.loc[df["section_num"] == 62, "x_shift"] -= -0.2
+
+df.loc[df["section_num"] == 63, "x_shift"] -= -0.2
+
 # =========================================================
 # RESET INDEX
 # =========================================================

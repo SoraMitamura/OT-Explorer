@@ -305,7 +305,7 @@ st.sidebar.markdown("""
 font-size:18px;
 font-weight:600;
 line-height:1.3;
-margin-bottom:2px;
+margin-bottom:15px;
 ">
 MERFISH with imputed gene<br>
 by ABC atlas
@@ -315,7 +315,7 @@ by ABC atlas
 font-size:14px;
 font-weight:400;
 color:white;
-margin-bottom:-10px;
+margin-bottom:-20px;
 ">
 View of Olfactory Tubercle
 </div>

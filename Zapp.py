@@ -424,7 +424,7 @@ if view_mode == "Coronal":
     section_display = st.sidebar.selectbox(
         "Section",
         available_sections,
-        index=available_sections.index(54)
+        index=available_sections.index(50)
     )
 
     section = display_to_real[section_display]

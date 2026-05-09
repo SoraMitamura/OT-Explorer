@@ -898,7 +898,7 @@ with stat_col:
     color:white;
     text-decoration:none;
     border:1px solid rgba(255,255,255,0.08);
-    width:100%;
+    width:70%;
     box-sizing:border-box;
     ">
     MERFISH only
@@ -923,7 +923,7 @@ with stat_col:
     color:white;
     text-decoration:none;
     border:1px solid rgba(255,255,255,0.08);
-    width:100%;
+    width:70%;
     box-sizing:border-box;
     ">
     What is OT?

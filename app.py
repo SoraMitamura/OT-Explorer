@@ -795,7 +795,7 @@ Statistics
     # METRICS
     # -----------------------------------------------------
 
-   with stat_col:
+with stat_col:
 
     st.markdown(...)
 

@@ -265,8 +265,8 @@ REMOVE TOP PADDING
 # SIZE PARAMETERS
 # =========================================================
 
-coronal_width = 600
-coronal_height = 440
+coronal_width = 800
+coronal_height = 600
 
 dorsal_width = 800
 dorsal_height = 440

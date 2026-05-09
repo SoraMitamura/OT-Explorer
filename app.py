@@ -308,7 +308,7 @@ line-height:1.3;
 margin-bottom:25px;
 ">
 MERFISH with imputed gene<br>
-by ABC atlas
+by ABC atlas (Allen Institute)
 </div>
 
 <div style="

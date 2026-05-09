@@ -764,7 +764,37 @@ with hist_container:
 
 with stat_col:
 
-    
+    # -----------------------------------------------------
+    # CLEAR BUTTON
+    # -----------------------------------------------------
+
+    clear_selection = st.button(
+        "Clear Selection",
+        key="clear_selection_button"
+    )
+
+    if clear_selection:
+
+        st.session_state.selected_index = None
+
+        st.session_state.plot_key += 1
+
+        st.rerun()
+
+    # -----------------------------------------------------
+    # LINK BUTTON
+    # -----------------------------------------------------
+
+    st.markdown(
+        "<div style='height:20px'></div>",
+        unsafe_allow_html=True
+    )
+
+    st.link_button(
+        "What is OT?",
+        "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
+        use_container_width=False
+    )
 
     # -----------------------------------------------------
     # STATISTICS TITLE
@@ -808,58 +838,10 @@ with stat_col:
         round(expr.max(), 3)
     )
 
-    st.markdown(
-        "<div style='margin-top:-40px'></div>",
-        unsafe_allow_html=True
-    )
-
-    # -----------------------------------------------------
-    # CLEAR BUTTON
-    # -----------------------------------------------------
-
-    clear_selection = st.button(
-        "Clear Selection",
-        key="clear_selection_button"
-    )
-
-    if clear_selection:
-
-        st.session_state.selected_index = None
-
-        st.session_state.plot_key += 1
-
-        st.rerun()
-
-
-
-# -----------------------------------------------------
-# SPACER
-# -----------------------------------------------------
-
-st.markdown(
-    "<div style='height:20px'></div>",
-    unsafe_allow_html=True
-)
-
-# -----------------------------------------------------
-# LINK BUTTON
-# -----------------------------------------------------
-
-st.link_button(
-    "What is OT?",
-    "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
-    use_container_width=False
-)
-
-    
-
-
-
-    
-
     # -----------------------------------------------------
     # DOWNLOAD CSV
-    # -----------------------------------------------------   
+    # -----------------------------------------------------
+
     csv = selected_df.to_csv(
         index=False
     ).encode("utf-8")

@@ -300,16 +300,23 @@ st.sidebar.markdown("<br>", unsafe_allow_html=True)
 # ---------------------------------------------------------
 # VIEW
 # ---------------------------------------------------------
-
 st.sidebar.markdown("""
 <div style="
 font-size:18px;
 font-weight:600;
 line-height:1.3;
-margin-bottom:10px;
+margin-bottom:2px;
 ">
 MERFISH with imputed gene<br>
-by ABC atlas<br>
+by ABC atlas
+</div>
+
+<div style="
+font-size:14px;
+font-weight:400;
+color:white;
+margin-bottom:8px;
+">
 View of Olfactory Tubercle
 </div>
 """, unsafe_allow_html=True)

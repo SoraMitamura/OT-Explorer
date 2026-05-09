@@ -846,7 +846,7 @@ with stat_col:
     st.markdown(
         "<div style='margin-top:-20px'></div>",
         unsafe_allow_html=True
-　　)
+    )
     st.link_button(
         "What is OT?",
         "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",

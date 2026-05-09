@@ -591,7 +591,7 @@ fig.update_layout(
 # =========================================================
 # MAIN LAYOUT
 # =========================================================
-config={"displayModeBar": False}
+
 plot_col, stat_col = st.columns([7,2.5])
 
 # =========================================================
@@ -622,6 +622,7 @@ with plot_col:
         on_select="rerun",
         selection_mode=("lasso", "box"),
         use_container_width=False
+        config={"displayModeBar": False}
     )
 
     # -----------------------------------------------------

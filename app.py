@@ -319,15 +319,15 @@ cluster = st.sidebar.selectbox(
 # LOAD DATA
 # =========================================================
 
-if cluster == "D1":
+if cluster == "D1 neurons":
 
     df = pd.read_csv("c61_whole_OT.csv")
 
-elif cluster == "D2":
+elif cluster == "D2 neurons":
 
     df = pd.read_csv("c62_whole_OT.csv")
 
-elif cluster == "Sema5a+D1":
+elif cluster == "Pdyn+Penk+D1 neurons":
 
     df = pd.read_csv("c63_whole_OT.csv")
 

@@ -266,7 +266,7 @@ REMOVE TOP PADDING
 # =========================================================
 
 coronal_width = 800
-coronal_height = 600
+coronal_height = 440
 
 dorsal_width = 800
 dorsal_height = 440

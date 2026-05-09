@@ -584,7 +584,7 @@ fig.update_layout(
 # MAIN LAYOUT
 # =========================================================
 
-plot_col, stat_col = st.columns([4,2.5])
+plot_col, stat_col = st.columns([7,2.5])
 
 # =========================================================
 # PLOT

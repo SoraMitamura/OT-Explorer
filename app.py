@@ -312,7 +312,7 @@ view_mode = st.sidebar.radio(
 
 cluster = st.sidebar.selectbox(
     "Cluster",
-    ["D1", "D2", "Sema5a+D1", "ICj"],
+    ["D1 neurons", "D2 neurons", "Pdyn+Penk+D1 neurons", "Islands of Caleja"],
     index=0
 )
 # =========================================================

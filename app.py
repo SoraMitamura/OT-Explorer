@@ -315,7 +315,7 @@ by ABC atlas
 font-size:14px;
 font-weight:400;
 color:white;
-margin-bottom:8px;
+margin-bottom:-10px;
 ">
 View of Olfactory Tubercle
 </div>

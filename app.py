@@ -866,6 +866,17 @@ with stat_col:
     # -----------------------------------------------------
     # LINK BUTTON
     # -----------------------------------------------------
+    st.markdown(
+        "<div style='height:20px'></div>",
+        unsafe_allow_html=True
+    )
+
+    st.link_button(
+        "MERFISH only",
+        "https://ot-explorer-tgy2kpdwd2jhmfnmfyxdvc.streamlit.app/",
+        use_container_width=False
+    )
+    
 
     st.markdown(
         "<div style='height:20px'></div>",

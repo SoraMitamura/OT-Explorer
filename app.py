@@ -906,7 +906,7 @@ with stat_col:
     """, unsafe_allow_html=True)
 
     st.markdown(
-        "<div style='height:10px'></div>",
+        "<div style='height:2px'></div>",
         unsafe_allow_html=True
     )
 

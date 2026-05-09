@@ -795,6 +795,10 @@ Statistics
     # METRICS
     # -----------------------------------------------------
 
+   with stat_col:
+
+    st.markdown(...)
+
     expr = selected_df[gene]
 
     st.metric(

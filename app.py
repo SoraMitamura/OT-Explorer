@@ -764,22 +764,7 @@ with hist_container:
 
 with stat_col:
 
-    # -----------------------------------------------------
-    # CLEAR BUTTON
-    # -----------------------------------------------------
-
-    clear_selection = st.button(
-        "Clear Selection",
-        key="clear_selection_button"
-    )
-
-    if clear_selection:
-
-        st.session_state.selected_index = None
-
-        st.session_state.plot_key += 1
-
-        st.rerun()
+    
 
     # -----------------------------------------------------
     # STATISTICS TITLE
@@ -827,10 +812,37 @@ with stat_col:
         "<div style='margin-top:-40px'></div>",
         unsafe_allow_html=True
     )
+
     # -----------------------------------------------------
-    # DOWNLOAD CSV
+    # CLEAR BUTTON
     # -----------------------------------------------------
 
+    clear_selection = st.button(
+        "Clear Selection",
+        key="clear_selection_button"
+    )
+
+    if clear_selection:
+
+        st.session_state.selected_index = None
+
+        st.session_state.plot_key += 1
+
+        st.rerun()
+
+    st.markdown(
+        "<div style='margin-top:-40px'></div>",
+        unsafe_allow_html=True
+    )
+    st.link_button(
+        "What is OT?",
+        "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
+        use_container_width=False
+    )
+
+    # -----------------------------------------------------
+    # DOWNLOAD CSV
+    # -----------------------------------------------------   
     csv = selected_df.to_csv(
         index=False
     ).encode("utf-8")
@@ -841,14 +853,4 @@ with stat_col:
         file_name=f"{gene}_{cluster}_selected.csv",
         mime="text/csv",
         key="download_selected_csv"
-    )
-
-    st.markdown(
-        "<div style='margin-top:-40px'></div>",
-        unsafe_allow_html=True
-    )
-    st.link_button(
-        "What is OT?",
-        "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
-        use_container_width=False
     )

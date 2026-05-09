@@ -781,10 +781,14 @@ with stat_col:
 
         st.rerun()
 
-    st.markdown(
-        "<div style='height:6px'></div>",
-        unsafe_allow_html=True
-    )
+     st.markdown("""
+    <h2 style="
+    font-size:24px;
+    font-weight:650;
+    margin-top:10px;
+    margin-bottom:8px;
+    line-height:1.1;
+    ">
 
     st.markdown("""
     <h2 style="

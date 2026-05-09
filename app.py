@@ -843,9 +843,9 @@ with stat_col:
         key="download_selected_csv"
     )
 
-　　st.markdown(
-　　    "<div style='margin-top:-20px'></div>",
-　　    unsafe_allow_html=True
+    st.markdown(
+        "<div style='margin-top:-20px'></div>",
+        unsafe_allow_html=True
 　　)
     st.link_button(
         "What is OT?",

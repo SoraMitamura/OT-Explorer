@@ -399,7 +399,12 @@ if view_mode == "Coronal":
     section = st.sidebar.selectbox(
         "Section(21)",
         available_sections,
-        index=available_sections.index(54)
+        index=available_sections.index(54),
+
+        format_func=lambda x:
+            "60" if x == 6 else
+            "50" if x == 5 else
+            str(x)
     )
 
     df = df[df["section_num"] == section]

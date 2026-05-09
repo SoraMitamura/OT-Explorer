@@ -385,12 +385,12 @@ df["section_num"] = (
 if view_mode == "Coronal":
 
     section = st.sidebar.number_input(
-        "Section",
-        min_value=int(df["section_num"].min()),
-        max_value=int(df["section_num"].max()),
-        value=int(df["section_num"].max()),
-        step=1
-    )
+    "Section",
+    min_value=int(df["section_num"].min()),
+    max_value=int(df["section_num"].max()),
+    value=54,
+    step=1
+)
 
     df = df[df["section_num"] == section]
 

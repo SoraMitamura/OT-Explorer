@@ -832,22 +832,26 @@ with stat_col:
 
 
 
-    st.markdown("""
-    <h2 style="
-    font-size:24px;
-    font-weight:650;
-    margin-top:20px;
-    margin-bottom:8px;
-    line-height:1.1;
-    ">
+# -----------------------------------------------------
+# SPACER
+# -----------------------------------------------------
+
+st.markdown(
+    "<div style='height:20px'></div>",
+    unsafe_allow_html=True
+)
+
+# -----------------------------------------------------
+# LINK BUTTON
+# -----------------------------------------------------
+
+st.link_button(
+    "What is OT?",
+    "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
+    use_container_width=False
+)
 
     
-    st.link_button(
-        "What is OT?",
-        "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
-        use_container_width=False
-    )
-
 
 
 

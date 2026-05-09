@@ -851,8 +851,8 @@ with stat_col:
     )
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown(
-        "<div style='height:60px'></div>",
-        unsafe_allow_html=False
+        "<div style='height:0px'></div>",
+        unsafe_allow_html=True
     )
     st.link_button(
         "What is OT?",

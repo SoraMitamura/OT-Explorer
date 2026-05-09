@@ -758,46 +758,48 @@ with hist_container:
         config={"displayModeBar": False}
     )
 
-# -----------------------------------------------------
-# CLEAR BUTTON
-# -----------------------------------------------------
+# =========================================================
+# STATISTICS CARD
+# =========================================================
 
-clear_selection = st.button(
-    "Clear Selection",
-    key="clear_selection_button"
-)
+with stat_col:
 
-if clear_selection:
+    # -----------------------------------------------------
+    # CLEAR BUTTON
+    # -----------------------------------------------------
 
-    st.session_state.selected_index = None
+    clear_selection = st.button(
+        "Clear Selection",
+        key="clear_selection_button"
+    )
 
-    st.session_state.plot_key += 1
+    if clear_selection:
 
-    st.rerun()
+        st.session_state.selected_index = None
 
-# -----------------------------------------------------
-# STATISTICS TITLE
-# -----------------------------------------------------
+        st.session_state.plot_key += 1
 
-st.markdown("""
-<h2 style="
-font-size:24px;
-font-weight:650;
-margin-top:10px;
-margin-bottom:8px;
-line-height:1.1;
-">
-Statistics
-</h2>
-""", unsafe_allow_html=True)
+        st.rerun()
+
+    # -----------------------------------------------------
+    # STATISTICS TITLE
+    # -----------------------------------------------------
+
+    st.markdown("""
+    <h2 style="
+    font-size:24px;
+    font-weight:650;
+    margin-top:10px;
+    margin-bottom:8px;
+    line-height:1.1;
+    ">
+    Statistics
+    </h2>
+    """, unsafe_allow_html=True)
 
     # -----------------------------------------------------
     # METRICS
     # -----------------------------------------------------
-
-with stat_col:
-
-    st.markdown(...)
 
     expr = selected_df[gene]
 
@@ -826,7 +828,6 @@ with stat_col:
         unsafe_allow_html=True
     )
 
-   
     # -----------------------------------------------------
     # DOWNLOAD CSV
     # -----------------------------------------------------
@@ -842,18 +843,14 @@ with stat_col:
         mime="text/csv",
         key="download_selected_csv"
     )
-    st.markdown(
-        "<div style='margin-bottom:-120px'></div>",
-        unsafe_allow_html=True
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
+
     st.markdown(
         "<div style='height:0px'></div>",
         unsafe_allow_html=True
     )
+
     st.link_button(
         "What is OT?",
         "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
         use_container_width=False
     )
-

@@ -311,7 +311,7 @@ view_mode = st.sidebar.radio(
 # ---------------------------------------------------------
 
 cluster = st.sidebar.selectbox(
-    "Cluster",
+    "Cluster(5)",
     ["Pdyn(+)Penk(-) D1", "D2", "Pdyn(+)Penk(+) D1", "ICj", "Cap"],
     index=0
 )
@@ -361,7 +361,7 @@ gene_list = sorted([
 # ---------------------------------------------------------
 
 gene = st.sidebar.selectbox(
-    "Gene",
+    "Gene(30)",
     gene_list,
     index=gene_list.index("Oprm1")
     if "Oprm1" in gene_list else 0
@@ -389,7 +389,7 @@ if view_mode == "Coronal":
     )
 
     section = st.sidebar.selectbox(
-        "Section",
+        "Section(8)",
         available_sections,
         index=available_sections.index(54)
     )

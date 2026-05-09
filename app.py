@@ -312,14 +312,14 @@ view_mode = st.sidebar.radio(
 
 cluster = st.sidebar.selectbox(
     "Cluster",
-    ["Pdyn+Penk- D1", "D2", "Pdyn+Penk+ D1", "ICj", "Cap"],
+    ["Pdyn(+)Penk(-) D1", "D2", "Pdyn(+)Penk(+) D1", "ICj", "Cap"],
     index=0
 )
 # =========================================================
 # LOAD DATA
 # =========================================================
 
-if cluster == "Pdyn+Penk- D1":
+if cluster == "Pdyn(+)Penk(-) D1":
 
     df = pd.read_csv("c61_whole_OT.csv")
 
@@ -329,7 +329,7 @@ elif cluster == "D2":
 
 elif cluster == "Sema5a+D1":
 
-    df = pd.read_csv("Pdyn+Penk+ D1.csv")
+    df = pd.read_csv("Pdyn(+)Penk(+) D1.csv")
 
 elif cluster == "ICj":
 

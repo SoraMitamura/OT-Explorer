@@ -758,49 +758,38 @@ with hist_container:
         config={"displayModeBar": False}
     )
 
-# =========================================================
-# STATISTICS CARD
-# =========================================================
+# -----------------------------------------------------
+# CLEAR BUTTON
+# -----------------------------------------------------
 
-with stat_col:
-   
- # -----------------------------------------------------
-    # CLEAR BUTTON
-    # -----------------------------------------------------
-    st.markdown("""
-    <h2 style="
-    font-size:24px;
-    font-weight:650;
-    margin-top:10px;
-    margin-bottom:8px;
-    line-height:1.1;
-    ">
-    clear_selection = st.button(
-        "Clear Selection",
-        key="clear_selection_button"
-    )
+clear_selection = st.button(
+    "Clear Selection",
+    key="clear_selection_button"
+)
 
-    if clear_selection:
+if clear_selection:
 
-        st.session_state.selected_index = None
+    st.session_state.selected_index = None
 
-        st.session_state.plot_key += 1
+    st.session_state.plot_key += 1
 
-        st.rerun()
+    st.rerun()
 
+# -----------------------------------------------------
+# STATISTICS TITLE
+# -----------------------------------------------------
 
-
-    st.markdown("""
-    <h2 style="
-    font-size:24px;
-    font-weight:650;
-    margin-top:10px;
-    margin-bottom:8px;
-    line-height:1.1;
-    ">
-    Statistics
-    </h2>
-    """, unsafe_allow_html=True)
+st.markdown("""
+<h2 style="
+font-size:24px;
+font-weight:650;
+margin-top:10px;
+margin-bottom:8px;
+line-height:1.1;
+">
+Statistics
+</h2>
+""", unsafe_allow_html=True)
 
     # -----------------------------------------------------
     # METRICS

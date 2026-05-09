@@ -548,7 +548,7 @@ else:
 
 fig = px.scatter(
     df,
-    x="x",
+    x="x_shift",
     y=y_plot,
     color=gene,
     hover_data=[

@@ -57,11 +57,11 @@ div.stButton {
 }
 
 div.stDownloadButton {
-    margin-bottom: -16px;
+    margin-bottom: -18px;
 }
 
 div.stLinkButton {
-    margin-bottom: -16px;
+    margin-bottom: -18px;
 }
 </style>
 """, unsafe_allow_html=True)

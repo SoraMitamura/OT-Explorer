@@ -927,7 +927,6 @@ with stat_col:
     box-sizing:border-box;
     margin-top:-10px;
     ">
-    margin-top:-10px;
     What is OT?
     </a>
     """, unsafe_allow_html=True)

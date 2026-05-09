@@ -514,9 +514,9 @@ df["dorsal_y"] += (
 
 df["x_shift"] = df["x"]
 
-df.loc[df["section_num"] == 46, "x_shift"] -= 2
+df.loc[df["section_num"] == 46, "x_shift"] -= 0.2
 
-df.loc[df["section_num"] == 5, "x_shift"] -= 2
+df.loc[df["section_num"] == 5, "x_shift"] -= 0.2
 
 # =========================================================
 # RESET INDEX

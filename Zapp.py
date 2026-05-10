@@ -518,7 +518,7 @@ if view_mode == "Pseudo-Dorsal":
 elif view_mode == "Pseudo-Dorsal2":
 
     sections_plot = [
-        20,21,22,23,25,27,28
+        20,21,22,23,24,25,26,27,28
     ]
 
 else:

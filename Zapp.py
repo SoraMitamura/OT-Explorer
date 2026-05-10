@@ -555,6 +555,11 @@ if view_mode == "Pseudo-Dorsal":
 
     df.loc[df["section_num"] == 5, "x_shift"] -= 0.2
 
+if view_mode == "Pseudo-Dorsal2":
+
+    df.loc[df["section_num"] == 25, "x_shift"] -= 0.2
+
+  
 # =========================================================
 # RESET INDEX
 # =========================================================

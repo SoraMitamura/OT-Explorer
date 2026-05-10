@@ -385,7 +385,7 @@ else:
     df["section_num"] = pd.to_numeric(
     df["brain_section_label"]
     .astype(str)
-    .str[-3:-1],
+    .str[-2:0],
     errors="coerce"
     )
 

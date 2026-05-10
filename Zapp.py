@@ -558,7 +558,7 @@ if view_mode == "Pseudo-Dorsal":
 if view_mode == "Pseudo-Dorsal2":
 
     df.loc[df["section_num"] == 25, "x_shift"] -= 0.2
-    df.loc[df["section_num"] == 28, "x_shift"] -= 0.1
+    df.loc[df["section_num"] == 28, "x_shift"] -= 0.2
 
   
 # =========================================================

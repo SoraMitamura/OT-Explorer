@@ -321,10 +321,6 @@ View of Olfactory Tubercle
 </div>
 """, unsafe_allow_html=True)
 
-view_mode = st.sidebar.radio(
-    "",
-    ["Coronal", "Pseudo-Dorsal"]
-)
 
 # =========================================================
 # VIEW MODE

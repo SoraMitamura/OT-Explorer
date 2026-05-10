@@ -519,9 +519,9 @@ cmax = st.sidebar.number_input(
 jitter = st.sidebar.slider(
     "Dorsal jitter",
     0.0,
-    0.5,
     0.2,
-    0.05
+    0.1,
+    0.025
 )
 # =========================================================
 # RESET STATE

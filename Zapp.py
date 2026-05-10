@@ -441,6 +441,7 @@ elif view_mode == "Coronal2":
     available_sections = [
         20,21,22,23,25,27,28
     ]
+
     display_to_real = {
         20:2,
         21:21,
@@ -450,11 +451,14 @@ elif view_mode == "Coronal2":
         27:27,
         28:28,
     }
+
     section_display = st.sidebar.selectbox(
         "Section",
         available_sections,
         index=available_sections.index(23)
     )
+
+    section = display_to_real[section_display]
 
     df = df[df["section_num"] == section]
 

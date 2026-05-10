@@ -321,21 +321,20 @@ view_mode = st.sidebar.radio(
 
 if view_mode in ["Coronal", "Pseudo-Dorsal"]:
 
-```
+
 if cluster == "D1":
     df = pd.read_csv("Zc61_whole_OT.csv")
 else:
     df = pd.read_csv("Zc62_whole_OT.csv")
-```
+
 
 elif view_mode in ["Coronal2", "Pseudo-Dorsal2"]:
 
-```
+
 if cluster == "D1":
     df = pd.read_csv("Z2c61_whole_OT.csv")
 else:
     df = pd.read_csv("Z2c62_whole_OT.csv")
-```
 
 # =========================================================
 
@@ -377,7 +376,6 @@ if "Oprm1" in gene_list else 0
 
 if view_mode in ["Coronal", "Pseudo-Dorsal"]:
 
-```
 df["section_num"] = (
     df["brain_section_label"]
     .astype(str)
@@ -385,11 +383,10 @@ df["section_num"] = (
     .str[-1]
     .astype(int)
 )
-```
 
 else:
 
-```
+
 # example:
 # -2.abcde -> cd
 
@@ -399,7 +396,7 @@ df["section_num"] = (
     .str[-3:-1]
     .astype(int)
 )
-```
+
 
 # =========================================================
 
@@ -409,7 +406,6 @@ df["section_num"] = (
 
 if view_mode == "Coronal":
 
-```
 available_sections = [
     43,44,45,46,47,48,49,
     50,51,52,53,54,55,56,57,58,59,
@@ -449,11 +445,10 @@ section_display = st.sidebar.selectbox(
 section = display_to_real[section_display]
 
 df = df[df["section_num"] == section]
-```
+
 
 elif view_mode == "Coronal2":
 
-```
 available_sections = [
     20,21,22,23,25,27,28
 ]
@@ -511,13 +506,12 @@ st.session_state.last_state = current_state
 
 if current_state != st.session_state.last_state:
 
-```
 st.session_state.selected_index = None
 
 st.session_state.plot_key += 1
 
 st.session_state.last_state = current_state
-```
+
 
 # =========================================================
 
@@ -527,31 +521,24 @@ st.session_state.last_state = current_state
 
 if view_mode == "Pseudo-Dorsal":
 
-```
 sections_plot = [
     43,44,45,46,47,48,49,
     5,51,52,53,54,55,56,57,58,59,
     6,61,62,63
 ]
-```
 
 elif view_mode == "Pseudo-Dorsal2":
 
-```
 sections_plot = [
     20,21,22,23,25,27,28
 ]
-```
 
 else:
 
-```
 sections_plot = []
-```
 
 if len(sections_plot) > 0:
 
-```
 section_map = {
     s:i for i,s in enumerate(sections_plot)
 }
@@ -567,7 +554,6 @@ np.random.seed(42)
 df["dorsal_y"] += (
     np.random.rand(len(df)) - 0.5
 ) * 2 * jitter
-```
 
 # =========================================================
 
@@ -579,10 +565,9 @@ df["x_shift"] = df["x"]
 
 if view_mode == "Pseudo-Dorsal":
 
-```
 df.loc[df["section_num"] == 46, "x_shift"] -= 0.5
 df.loc[df["section_num"] == 5, "x_shift"] -= 0.5
-```
+
 
 # =========================================================
 
@@ -600,10 +585,10 @@ df = df.reset_index(drop=True)
 
 if gene not in df.columns:
 
-```
+
 st.error(f"Gene '{gene}' not found.")
 st.stop()
-```
+
 
 # =========================================================
 
@@ -613,17 +598,16 @@ st.stop()
 
 if view_mode in ["Coronal", "Coronal2"]:
 
-```
+
 y_plot = "y"
 x_plot = "x"
-```
+
 
 else:
 
-```
 y_plot = "dorsal_y"
 x_plot = "x_shift"
-```
+
 
 # =========================================================
 
@@ -686,7 +670,6 @@ size=point_size
 
 if view_mode in ["Coronal", "Coronal2"]:
 
-```
 fig.update_yaxes(
     autorange="reversed",
     scaleanchor="x"
@@ -694,18 +677,17 @@ fig.update_yaxes(
 
 fig_width = coronal_width
 fig_height = coronal_height
-```
+
 
 else:
 
-```
 fig.update_yaxes(
     autorange="reversed"
 )
 
 fig_width = dorsal_width
 fig_height = dorsal_height
-```
+
 
 fig.update_xaxes(visible=False)
 fig.update_yaxes(visible=False)
@@ -735,7 +717,7 @@ margin=dict(
     t=20,
     b=0
 )
-```
+
 
 )
 

@@ -372,12 +372,11 @@ gene = st.sidebar.selectbox(
 
 if view_mode in ["Coronal", "Pseudo-Dorsal"]:
 
-    df["section_num"] = (
-        df["brain_section_label"]
-        .astype(str)
-        .str.split(".")
-        .str[-1]
-        .astype(int)
+    df["section_num"] = pd.to_numeric(
+    df["brain_section_label"]
+    .astype(str)
+    .str[-3:-1],
+    errors="coerce"
     )
 
 else:

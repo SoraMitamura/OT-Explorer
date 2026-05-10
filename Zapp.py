@@ -382,11 +382,12 @@ if view_mode in ["Coronal", "Pseudo-Dorsal"]:
 
 else:
 
-    df["section_num"] = pd.to_numeric(
+    df["section_num"] = (
     df["brain_section_label"]
     .astype(str)
-    .str[-2:0],
-    errors="coerce"
+    .str.split(".")
+    .str[-1]
+    .astype(int)
     )
 
 # =========================================================
@@ -440,8 +441,16 @@ elif view_mode == "Coronal2":
     available_sections = [
         20,21,22,23,25,27,28
     ]
-
-    section = st.sidebar.selectbox(
+    display_to_real = {
+        20:2,
+        21:21,
+        22:22,
+        23:23,
+        25:25,
+        27:27,
+        28:28,
+    }
+    section_display = st.sidebar.selectbox(
         "Section",
         available_sections,
         index=available_sections.index(23)

@@ -296,6 +296,36 @@ st.sidebar.image(
 )
 
 st.sidebar.markdown("<br>", unsafe_allow_html=True)
+
+# ---------------------------------------------------------
+# VIEW
+# ---------------------------------------------------------
+st.sidebar.markdown("""
+<div style="
+font-size:18px;
+font-weight:600;
+line-height:1.3;
+margin-bottom:25px;
+">
+MERFISH only<br>
+by Zhuang Lab
+</div>
+
+<div style="
+font-size:14px;
+font-weight:400;
+color:white;
+margin-bottom:-25px;
+">
+View of Olfactory Tubercle
+</div>
+""", unsafe_allow_html=True)
+
+view_mode = st.sidebar.radio(
+    "",
+    ["Coronal", "Pseudo-Dorsal"]
+)
+
 # =========================================================
 # VIEW MODE
 # =========================================================

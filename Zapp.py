@@ -297,87 +297,87 @@ st.sidebar.image(
 
 st.sidebar.markdown("<br>", unsafe_allow_html=True)
 
-# ---------------------------------------------------------
-# VIEW
-# ---------------------------------------------------------
-st.sidebar.markdown("""
-<div style="
-font-size:18px;
-font-weight:600;
-line-height:1.3;
-margin-bottom:25px;
-">
-MERFISH only<br>
-by ABC atlas (Allen Institute)
-</div>
+# =========================================================
 
-<div style="
-font-size:14px;
-font-weight:400;
-color:white;
-margin-bottom:-25px;
-">
-View of Olfactory Tubercle
-</div>
-""", unsafe_allow_html=True)
+# VIEW MODE
+
+# =========================================================
 
 view_mode = st.sidebar.radio(
-    "",
-    ["Coronal", "Pseudo-Dorsal"]
+"",
+[
+"Coronal",
+"Pseudo-Dorsal",
+"Coronal2",
+"Pseudo-Dorsal2"
+]
 )
 
-# ---------------------------------------------------------
-# CLUSTER
-# ---------------------------------------------------------
-
-cluster = st.sidebar.selectbox(
-    "Cluster(5)",
-    ["D1", "D2"],
-    index=0
-)
 # =========================================================
+
 # LOAD DATA
+
 # =========================================================
 
+if view_mode in ["Coronal", "Pseudo-Dorsal"]:
+
+```
 if cluster == "D1":
-
     df = pd.read_csv("Zc61_whole_OT.csv")
-
-elif cluster == "D2":
-
+else:
     df = pd.read_csv("Zc62_whole_OT.csv")
+```
 
-# ---------------------------------------------------------
+elif view_mode in ["Coronal2", "Pseudo-Dorsal2"]:
+
+```
+if cluster == "D1":
+    df = pd.read_csv("Z2c61_whole_OT.csv")
+else:
+    df = pd.read_csv("Z2c62_whole_OT.csv")
+```
+
+# =========================================================
+
 # GENE LIST
-# ---------------------------------------------------------
+
+# =========================================================
 
 gene_list = sorted([
-    col for col in df.columns
-    if col not in [
-        "x",
-        "y",
-        "z",
-        "dorsal_y",
-        "section_num",
-        "cell_label",
-        "brain_section_label"
-    ]
+col for col in df.columns
+if col not in [
+"x",
+"y",
+"z",
+"dorsal_y",
+"section_num",
+"cell_label",
+"brain_section_label"
+]
 ])
 
-# ---------------------------------------------------------
+# =========================================================
+
 # GENE SELECTBOX
-# ---------------------------------------------------------
+
+# =========================================================
 
 gene = st.sidebar.selectbox(
-    "Gene(22)",
-    gene_list,
-    index=gene_list.index("Oprm1")
-    if "Oprm1" in gene_list else 0
+"Gene(22)",
+gene_list,
+index=gene_list.index("Oprm1")
+if "Oprm1" in gene_list else 0
 )
-# =========================================================
-# SECTION NUMBER
+
 # =========================================================
 
+# SECTION NUMBER
+
+# =========================================================
+
+if view_mode in ["Coronal", "Pseudo-Dorsal"]:
+
+```
 df["section_num"] = (
     df["brain_section_label"]
     .astype(str)
@@ -385,113 +385,173 @@ df["section_num"] = (
     .str[-1]
     .astype(int)
 )
+```
+
+else:
+
+```
+# example:
+# -2.abcde -> cd
+
+df["section_num"] = (
+    df["brain_section_label"]
+    .astype(str)
+    .str[-3:-1]
+    .astype(int)
+)
+```
+
 # =========================================================
+
 # CORONAL MODE
+
 # =========================================================
 
 if view_mode == "Coronal":
 
-    available_sections = [
-        43,44,45,46,47,48,49,
-        50,51,52,53,54,55,56,57,58,59,
-        60,61,62,63
-    ]
+```
+available_sections = [
+    43,44,45,46,47,48,49,
+    50,51,52,53,54,55,56,57,58,59,
+    60,61,62,63
+]
 
-    display_to_real = {
-        43:43,
-        44:44,
-        45:45,
-        46:46,
-        47:47,
-        48:48,
-        49:49,
-        50:5,
-        51:51,
-        52:52,
-        53:53,
-        54:54,
-        55:55,
-        56:56,
-        57:57,
-        58:58,
-        59:59,
-        60:6,
-        61:61,
-        62:62,
-        63:63
-    }
+display_to_real = {
+    43:43,
+    44:44,
+    45:45,
+    46:46,
+    47:47,
+    48:48,
+    49:49,
+    50:5,
+    51:51,
+    52:52,
+    53:53,
+    54:54,
+    55:55,
+    56:56,
+    57:57,
+    58:58,
+    59:59,
+    60:6,
+    61:61,
+    62:62,
+    63:63
+}
 
-    section_display = st.sidebar.selectbox(
-        "Section",
-        available_sections,
-        index=available_sections.index(50)
-    )
+section_display = st.sidebar.selectbox(
+    "Section",
+    available_sections,
+    index=available_sections.index(54)
+)
 
-    section = display_to_real[section_display]
+section = display_to_real[section_display]
 
-    df = df[df["section_num"] == section]
-# ---------------------------------------------------------
+df = df[df["section_num"] == section]
+```
+
+elif view_mode == "Coronal2":
+
+```
+available_sections = [
+    20,21,22,23,25,27,28
+]
+
+section = st.sidebar.selectbox(
+    "Section",
+    available_sections,
+    index=available_sections.index(23)
+)
+
+df = df[df["section_num"] == section]
+```
+
+# =========================================================
+
 # POINT SIZE
-# ---------------------------------------------------------
+
+# =========================================================
 
 point_size = st.sidebar.slider(
-    "Point size",
-    1,
-    10,
-    5
-)
-# ---------------------------------------------------------
-# COLOR RANGE
-# ---------------------------------------------------------
-
-#cmin = st.sidebar.number_input(
-#    "Min",
-#    value=0.0,
-#    step=0.1,
-#    format="%.1f"
-#)
-cmin = 0;
-cmax = st.sidebar.number_input(
-    "Max",
-    value=3.0,
-    step=0.5,
-    format="%.1f"
+"Point size",
+1,
+10,
+5
 )
 
 # =========================================================
+
+# COLOR RANGE
+
+# =========================================================
+
+cmin = 0
+
+cmax = st.sidebar.number_input(
+"Max",
+value=5.0,
+step=0.5,
+format="%.1f"
+)
+
+# =========================================================
+
 # RESET STATE
+
 # =========================================================
 
 current_state = (
-    view_mode,
-    cluster
+view_mode,
+cluster
 )
 
 if "last_state" not in st.session_state:
-    st.session_state.last_state = current_state
+st.session_state.last_state = current_state
 
 if current_state != st.session_state.last_state:
 
-    st.session_state.selected_index = None
+```
+st.session_state.selected_index = None
 
-    st.session_state.plot_key += 1
+st.session_state.plot_key += 1
 
-    st.session_state.last_state = current_state
-
-
-
-
+st.session_state.last_state = current_state
+```
 
 # =========================================================
+
 # DORSAL MAP
+
 # =========================================================
 
+if view_mode == "Pseudo-Dorsal":
+
+```
 sections_plot = [
     43,44,45,46,47,48,49,
     5,51,52,53,54,55,56,57,58,59,
     6,61,62,63
 ]
+```
 
+elif view_mode == "Pseudo-Dorsal2":
+
+```
+sections_plot = [
+    20,21,22,23,25,27,28
+]
+```
+
+else:
+
+```
+sections_plot = []
+```
+
+if len(sections_plot) > 0:
+
+```
 section_map = {
     s:i for i,s in enumerate(sections_plot)
 }
@@ -507,122 +567,177 @@ np.random.seed(42)
 df["dorsal_y"] += (
     np.random.rand(len(df)) - 0.5
 ) * 2 * jitter
+```
 
 # =========================================================
+
 # X SHIFT
+
 # =========================================================
 
 df["x_shift"] = df["x"]
 
+if view_mode == "Pseudo-Dorsal":
 
-df.loc[df["section_num"] == 44, "x_shift"] -= 0.1
-df.loc[df["section_num"] == 45, "x_shift"] -= 0.1
-df.loc[df["section_num"] == 46, "x_shift"] -= 0.3
-df.loc[df["section_num"] == 47, "x_shift"] -= 0.1
-df.loc[df["section_num"] == 48, "x_shift"] -= 0.1
-df.loc[df["section_num"] == 49, "x_shift"] -= 0.1
-
-df.loc[df["section_num"] == 5, "x_shift"] -= 0.3
-df.loc[df["section_num"] == 61, "x_shift"] -= 0.1
-df.loc[df["section_num"] == 62, "x_shift"] -= -0.1
-
-df.loc[df["section_num"] == 63, "x_shift"] -= -0.1
-
-df.loc[df["section_num"] == 6, "x_shift"] -= 0.1
+```
+df.loc[df["section_num"] == 46, "x_shift"] -= 0.5
+df.loc[df["section_num"] == 5, "x_shift"] -= 0.5
+```
 
 # =========================================================
+
 # RESET INDEX
+
 # =========================================================
 
 df = df.reset_index(drop=True)
 
 # =========================================================
+
 # CHECK GENE
+
 # =========================================================
 
 if gene not in df.columns:
 
-    st.error(f"Gene '{gene}' not found.")
-    st.stop()
+```
+st.error(f"Gene '{gene}' not found.")
+st.stop()
+```
 
 # =========================================================
+
 # Y AXIS
+
 # =========================================================
 
-if view_mode == "Coronal":
-    y_plot = "y"
+if view_mode in ["Coronal", "Coronal2"]:
+
+```
+y_plot = "y"
+x_plot = "x"
+```
+
 else:
-    y_plot = "dorsal_y"
+
+```
+y_plot = "dorsal_y"
+x_plot = "x_shift"
+```
 
 # =========================================================
+
 # FIGURE
+
 # =========================================================
 
 fig = px.scatter(
-    df,
-    x="x_shift",
-    y=y_plot,
-    color=gene,
-    hover_data=[
-        gene,
-        "brain_section_label"
-    ],
-    color_continuous_scale="Viridis",
-    template="plotly_dark"
+df,
+x=x_plot,
+y=y_plot,
+color=gene,
+hover_data=[
+gene,
+"brain_section_label"
+],
+color_continuous_scale="Viridis",
+template="plotly_dark"
 )
 
 # =========================================================
+
 # COLOR SCALE
+
 # =========================================================
 
 fig.update_coloraxes(
 
-    cmin=cmin,
-    cmax=cmax,
+```
+cmin=cmin,
+cmax=cmax,
 
-    colorbar=dict(
-        title="log2(CPM+1)",
-        thickness=20,
-        title_font=dict(size=18),
-        tickfont=dict(size=14)
-    )
+colorbar=dict(
+    title="log2(CPM+1)",
+    thickness=20,
+    title_font=dict(size=18),
+    tickfont=dict(size=14)
+)
+```
+
 )
 
 # =========================================================
+
 # MARKER SIZE
+
 # =========================================================
 
 fig.update_traces(
-    marker=dict(
-        size=point_size
-    )
+marker=dict(
+size=point_size
+)
 )
 
 # =========================================================
+
 # AXIS
+
 # =========================================================
 
-if view_mode == "Coronal":
+if view_mode in ["Coronal", "Coronal2"]:
 
-    fig.update_yaxes(
-        autorange="reversed",
-        scaleanchor="x"
-    )
+```
+fig.update_yaxes(
+    autorange="reversed",
+    scaleanchor="x"
+)
 
-    fig_width = coronal_width
-    fig_height = coronal_height
+fig_width = coronal_width
+fig_height = coronal_height
+```
 
 else:
 
-    fig.update_yaxes(
-        autorange="reversed"
-    )
+```
+fig.update_yaxes(
+    autorange="reversed"
+)
 
-    fig_width = dorsal_width
-    fig_height = dorsal_height
+fig_width = dorsal_width
+fig_height = dorsal_height
+```
 
 fig.update_xaxes(visible=False)
 fig.update_yaxes(visible=False)
+
+# =========================================================
+
+# LAYOUT
+
+# =========================================================
+
+fig.update_layout(
+
+```
+width=fig_width,
+height=fig_height,
+
+paper_bgcolor="rgba(0,0,0,0)",
+plot_bgcolor="rgba(0,0,0,0)",
+
+font=dict(
+    color="white"
+),
+
+margin=dict(
+    l=0,
+    r=0,
+    t=20,
+    b=0
+)
+```
+
+)
 
 # =========================================================
 # LAYOUT

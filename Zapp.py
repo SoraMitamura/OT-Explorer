@@ -519,7 +519,7 @@ cmax = st.sidebar.number_input(
 jitter = st.sidebar.slider(
     "Dorsal jitter",
     0.0,
-    3.0,
+    1.0,
     0.4,
     0.05
 )

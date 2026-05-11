@@ -423,7 +423,7 @@ if view_mode == "Coronal":
     )
 
     section = st.sidebar.selectbox(
-        "Section(8)",
+        "Section (55→47:A→P)",
         available_sections,
         index=available_sections.index(54)
     )

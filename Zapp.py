@@ -479,7 +479,7 @@ elif view_mode == "Coronal2":
     }
 
     section_display = st.sidebar.selectbox(
-        "Section",
+        "Section (43→63:A→P)",
         available_sections,
         index=available_sections.index(23)
     )

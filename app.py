@@ -922,7 +922,7 @@ with stat_col:
 
     # What is OT?
     st.markdown("""
-    <a href="https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full"
+    <a href="https://ot-explorer-cs7v5bytc7ehgdztjcyymg.streamlit.app/"
     target="_blank"
     style="
     display:block;

@@ -535,7 +535,7 @@ if gene not in df.columns:
 # Y AXIS
 # =========================================================
 
-if view_mode == "Coronal":
+if view_mode in ["Coronal", "Coronal2"]:
     y_plot = "y"
 else:
     y_plot = "dorsal_y"

@@ -588,7 +588,7 @@ fig.update_traces(
 # AXIS
 # =========================================================
 
-if view_mode == "Coronal":
+if view_mode in ["Coronal", "Coronal2"]:
 
     fig.update_yaxes(
         autorange="reversed",

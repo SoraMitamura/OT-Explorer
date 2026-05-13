@@ -375,7 +375,7 @@ if view_mode in ["Coronal", "Pseudo-Dorsal"]:
         
 elif view_mode in ["Coronal2", "Pseudo-Dorsal2"]:
 
-    if cluster == "Pdyn(+)Penk(-) D1":
+    if cluster == "D1":
         
         df = pd.read_csv("c61_whole_OT2.csv")
 

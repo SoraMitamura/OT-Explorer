@@ -88,6 +88,16 @@ st.divider()
 for _, row in filtered.iterrows():
 
     col1, col2 = st.columns([12, 1])
+    # -------------------------
+    # year
+    # -------------------------
+
+    with col2:
+
+        if pd.notna(row["year"]):
+
+            st.write(int(row["year"]))
+
 
     # -------------------------
     # title
@@ -107,19 +117,10 @@ for _, row in filtered.iterrows():
     </a>
     """,
     unsafe_allow_html=True
-)
+    )
 
 
 
-    # -------------------------
-    # year
-    # -------------------------
-
-    with col2:
-
-        if pd.notna(row["year"]):
-
-            st.write(int(row["year"]))
 
 # =========================================================
 # FOOTER

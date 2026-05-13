@@ -426,7 +426,7 @@ df["section_num"] = (
 # CORONAL MODE
 # =========================================================
 
-if view_mode == "Coronal":
+if view_mode in ["Coronal", "Coronal2"]:
 
     available_sections = sorted(
         [s for s in df["section_num"].unique() if s != 53]

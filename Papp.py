@@ -85,40 +85,40 @@ st.divider()
 # PAPER LIST
 # =========================================================
 
-for _, row in filtered.iterrows():
+    for _, row in filtered.iterrows():
 
-col1, col2 = st.columns([1, 12])
+    col1, col2 = st.columns([1, 12])
 
-# -------------------------
-# year
-# -------------------------
+    # -------------------------
+    # year
+    # -------------------------
 
-with col1:
+    with col1:
 
-    if pd.notna(row["year"]):
+        if pd.notna(row["year"]):
 
-        st.write(int(row["year"]))
+            st.write(int(row["year"]))
 
-# -------------------------
-# title
-# -------------------------
+    # -------------------------
+    # title
+    # -------------------------
 
-with col2:
+    with col2:
 
-    st.markdown(
-        f"""
-        <a href="{row['url']}"
-           target="_blank"
-           style="
-               text-decoration:none;
-               font-size:18px;
-               font-weight:500;
-           ">
-           {row['title']}
-        </a>
-        """,
-        unsafe_allow_html=True
-    )
+        st.markdown(
+            f"""
+            <a href="{row['url']}"
+               target="_blank"
+               style="
+                   text-decoration:none;
+                   font-size:18px;
+                   font-weight:500;
+               ">
+               {row['title']}
+            </a>
+            """,
+            unsafe_allow_html=True
+        )
 
 
 

@@ -25,7 +25,7 @@ st.caption("Olfactory Tubercle literature explorer")
 def load_data():
     return pd.read_csv(
         "papers.csv",
-        encoding="utf-8-sig"
+        encoding="cp932"
     )
 
 df = load_data()

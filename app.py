@@ -337,7 +337,7 @@ View of Olfactory Tubercle
 
 view_mode = st.sidebar.radio(
     "",
-    ["Coronal", "Pseudo-Dorsal"]
+    ["Coronal", "Pseudo-Dorsal", "Coronal2", "Pseudo-Dorsal2"]
 )
 
 # ---------------------------------------------------------
@@ -352,26 +352,36 @@ cluster = st.sidebar.selectbox(
 # =========================================================
 # LOAD DATA
 # =========================================================
+if view_mode in ["Coronal", "Pseudo-Dorsal"]:
+    if cluster == "Pdyn(+)Penk(-) D1":
 
-if cluster == "Pdyn(+)Penk(-) D1":
+        df = pd.read_csv("c61_whole_OT.csv")
 
-    df = pd.read_csv("c61_whole_OT.csv")
+    elif cluster == "D2":
 
-elif cluster == "D2":
+        df = pd.read_csv("c62_whole_OT.csv")
 
-    df = pd.read_csv("c62_whole_OT.csv")
+    elif cluster == "Pdyn(+)Penk(+) D1":
 
-elif cluster == "Pdyn(+)Penk(+) D1":
+        df = pd.read_csv("c63_whole_OT.csv")
 
-    df = pd.read_csv("c63_whole_OT.csv")
+    elif cluster == "ICj":
 
-elif cluster == "ICj":
+        df = pd.read_csv("whole_ICj.csv")
 
-    df = pd.read_csv("whole_ICj.csv")
+    else:
 
-else:
+        df = pd.read_csv("c264_whole_Cap.csv")
+        
+elif view_mode in ["Coronal2", "Pseudo-Dorsal2"]:
 
-    df = pd.read_csv("c264_whole_Cap.csv")
+    if cluster == "Pdyn(+)Penk(-) D1":
+        
+        df = pd.read_csv("c61_whole_OT2.csv")
+
+    elif cluster == "D2":
+        
+        df = pd.read_csv("c62_whole_OT2.csv")
 
 # ---------------------------------------------------------
 # GENE LIST

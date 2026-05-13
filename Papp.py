@@ -1,95 +1,130 @@
 import streamlit as st
 import pandas as pd
 
-# ------------------------------------------------
-# page config
-# ------------------------------------------------
+# =========================================================
+# PAGE CONFIG
+# =========================================================
 
 st.set_page_config(
     page_title="OT Paper Explorer",
     layout="wide"
 )
 
-# ------------------------------------------------
-# title
-# ------------------------------------------------
+# =========================================================
+# TITLE
+# =========================================================
 
 st.title("OT Paper Explorer")
 st.caption("Olfactory Tubercle literature explorer")
 
-# ------------------------------------------------
-# load data
-# ------------------------------------------------
+# =========================================================
+# LOAD DATA
+# =========================================================
 
 def load_data():
-    return pd.read_excel("papers.xlsx")
+
+    df = pd.read_excel("papers.xlsx")
+
+    # year を数値化
+    if "year" in df.columns:
+
+        df["year"] = pd.to_numeric(
+            df["year"],
+            errors="coerce"
+        )
+
+    return df
+
 
 df = load_data()
 
-# ------------------------------------------------
-# sidebar
-# ------------------------------------------------
+# =========================================================
+# SEARCH
+# =========================================================
 
-st.sidebar.header("Filters")
-
-category = st.sidebar.multiselect(
-    "Category",
-    sorted(df["category"].dropna().unique())
+search = st.text_input(
+    "Search title"
 )
 
-
-
-
-search = st.sidebar.text_input("Search")
-
-# ------------------------------------------------
-# filtering
-# ------------------------------------------------
+# =========================================================
+# FILTERING
+# =========================================================
 
 filtered = df.copy()
 
-if category:
-    filtered = filtered[
-        filtered["category"].isin(category)
-    ]
-
 if search:
+
     filtered = filtered[
-        filtered.apply(
-            lambda row:
-            search.lower() in str(row).lower(),
-            axis=1
+        filtered["title"].str.contains(
+            search,
+            case=False,
+            na=False
         )
     ]
 
-# newest first
-filtered = filtered.sort_values(
-    by="year",
-    ascending=False
-)
+# =========================================================
+# SORT
+# =========================================================
 
-# ------------------------------------------------
-# display
-# ------------------------------------------------
+if "year" in filtered.columns:
+
+    filtered = filtered.sort_values(
+        by="year",
+        ascending=False
+    )
+
+# =========================================================
+# RESULT COUNT
+# =========================================================
 
 st.write(f"{len(filtered)} papers")
 
+st.divider()
+
+# =========================================================
+# PAPER LIST
+# =========================================================
+
 for _, row in filtered.iterrows():
 
-    with st.container(border=True):
+    col1, col2 = st.columns([12, 1])
 
-        st.subheader(row["title"])
+    # -------------------------
+    # title
+    # -------------------------
 
-        st.write(row["authors"])
+    with col1:
 
-        st.caption(
-            f"{row['journal']} ({row['year']})"
+        st.markdown(
+            f"""
+            <a href="{row['url']}"
+               target="_blank"
+               style="
+                   text-decoration:none;
+                   color:white;
+                   font-size:18px;
+                   font-weight:500;
+               ">
+               {row['title']}
+            </a>
+            """,
+            unsafe_allow_html=True
         )
 
+    # -------------------------
+    # year
+    # -------------------------
 
-        st.caption(row["tags"])
+    with col2:
 
-        st.link_button(
-            "Open Paper",
-            row["url"]
-        )
+        if pd.notna(row["year"]):
+
+            st.write(int(row["year"]))
+
+# =========================================================
+# FOOTER
+# =========================================================
+
+st.divider()
+
+st.caption("Built with Streamlit")

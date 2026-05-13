@@ -387,7 +387,7 @@ elif view_mode in ["Coronal2", "Pseudo-Dorsal2"]:
 
         df = pd.read_csv("whole_ICj2.csv")
 
-    else:
+
         
 
 # ---------------------------------------------------------

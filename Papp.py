@@ -101,7 +101,7 @@ for _, row in filtered.iterrows():
                target="_blank"
                style="
                    text-decoration:none;
-                   color:white;
+                   
                    font-size:18px;
                    font-weight:500;
                ">

@@ -85,7 +85,7 @@ st.divider()
 # PAPER LIST
 # =========================================================
 
-    for _, row in filtered.iterrows():
+for _, row in filtered.iterrows():
 
     col1, col2 = st.columns([1, 12])
 

@@ -23,7 +23,10 @@ st.caption("Olfactory Tubercle literature explorer")
 
 @st.cache_data
 def load_data():
-    return pd.read_csv("papers.csv")
+    return pd.read_csv(
+    "papers.csv",
+    encoding="utf-8-sig"
+)
 
 df = load_data()
 

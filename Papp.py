@@ -96,20 +96,19 @@ for _, row in filtered.iterrows():
     with col1:
 
         st.markdown(
-            f"""
-            <a href="{row['url']}"
-               target="_blank"
-               style="
-                   text-decoration:none;
-                   
-                   font-size:18px;
-                   font-weight:500;
-               ">
-               {row['title']}
-            </a>
-            """,
-            unsafe_allow_html=True
-        )
+  　　　　  f"""
+  　　　　  <a href="{row['url']}"
+   　　　　    target="_blank"
+   　　　　    style="
+   　　　　        text-decoration:none;
+   　　　　        font-size:18px;
+  　　　　         font-weight:500;
+  　　　　     ">
+  　　　　     {row['title']}
+  　　　　  </a>
+ 　　　　   """,
+　　　　    unsafe_allow_html=True
+　　　　)
 
     # -------------------------
     # year

@@ -87,36 +87,37 @@ st.divider()
 
 for _, row in filtered.iterrows():
 
-    col1, col2 = st.columns([12, 1])
-    # -------------------------
-    # year
-    # -------------------------
+col1, col2 = st.columns([1, 12])
 
-    with col2:
+# -------------------------
+# year
+# -------------------------
 
-        if pd.notna(row["year"]):
+with col1:
 
-            st.write(int(row["year"]))
+    if pd.notna(row["year"]):
 
+        st.write(int(row["year"]))
 
-    # -------------------------
-    # title
-    # -------------------------
+# -------------------------
+# title
+# -------------------------
 
-    with col1:
-        st.markdown(
-    f"""
-    <a href="{row['url']}"
-       target="_blank"
-       style="
-           text-decoration:none;
-           font-size:18px;
-           font-weight:500;
-       ">
-       {row['title']}
-    </a>
-    """,
-    unsafe_allow_html=True
+with col2:
+
+    st.markdown(
+        f"""
+        <a href="{row['url']}"
+           target="_blank"
+           style="
+               text-decoration:none;
+               font-size:18px;
+               font-weight:500;
+           ">
+           {row['title']}
+        </a>
+        """,
+        unsafe_allow_html=True
     )
 
 

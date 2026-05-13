@@ -1003,7 +1003,7 @@ with stat_col:
 
     st.link_button(
         "What is OT?",
-        "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2020.577880/full",
+        "https://ot-explorer-cs7v5bytc7ehgdztjcyymg.streamlit.app/",
         use_container_width=False
     )
     

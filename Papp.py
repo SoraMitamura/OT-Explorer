@@ -37,15 +37,8 @@ category = st.sidebar.multiselect(
     sorted(df["category"].dropna().unique())
 )
 
-species = st.sidebar.multiselect(
-    "Species",
-    sorted(df["species"].dropna().unique())
-)
 
-method = st.sidebar.multiselect(
-    "Method",
-    sorted(df["method"].dropna().unique())
-)
+
 
 search = st.sidebar.text_input("Search")
 
@@ -58,16 +51,6 @@ filtered = df.copy()
 if category:
     filtered = filtered[
         filtered["category"].isin(category)
-    ]
-
-if species:
-    filtered = filtered[
-        filtered["species"].isin(species)
-    ]
-
-if method:
-    filtered = filtered[
-        filtered["method"].isin(method)
     ]
 
 if search:
@@ -103,7 +86,6 @@ for _, row in filtered.iterrows():
             f"{row['journal']} ({row['year']})"
         )
 
-        st.write(row["summary"])
 
         st.caption(row["tags"])
 

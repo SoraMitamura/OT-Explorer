@@ -38,10 +38,7 @@ category = st.sidebar.multiselect(
 )
 
 
-method = st.sidebar.multiselect(
-    "Method",
-    sorted(df["method"].dropna().unique())
-)
+
 
 search = st.sidebar.text_input("Search")
 

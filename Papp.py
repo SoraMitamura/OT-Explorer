@@ -37,10 +37,6 @@ category = st.sidebar.multiselect(
     sorted(df["category"].dropna().unique())
 )
 
-species = st.sidebar.multiselect(
-    "Species",
-    sorted(df["species"].dropna().unique())
-)
 
 method = st.sidebar.multiselect(
     "Method",
@@ -59,10 +55,6 @@ if category:
     filtered = filtered[
         filtered["category"].isin(category)
     ]
-
-
-
-
 
 if search:
     filtered = filtered[

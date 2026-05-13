@@ -346,14 +346,14 @@ view_mode = st.sidebar.radio(
 
 cluster = st.sidebar.selectbox(
     "Cluster(5)",
-    ["Pdyn(+)Penk(-) D1", "D2", "Pdyn(+)Penk(+) D1", "ICj", "Cap"],
+    ["D1", "D2", "Pdyn(+)Penk(+) D1", "ICj", "Cap"],
     index=0
 )
 # =========================================================
 # LOAD DATA
 # =========================================================
 if view_mode in ["Coronal", "Pseudo-Dorsal"]:
-    if cluster == "Pdyn(+)Penk(-) D1":
+    if cluster == "D1":
 
         df = pd.read_csv("c61_whole_OT.csv")
 

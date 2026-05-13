@@ -21,7 +21,6 @@ st.caption("Olfactory Tubercle literature explorer")
 # load data
 # ------------------------------------------------
 
-@st.cache_data
 def load_data():
     return pd.read_excel("papers.xlsx")
 

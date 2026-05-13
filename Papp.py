@@ -86,7 +86,6 @@ for _, row in filtered.iterrows():
             f"{row['journal']} ({row['year']})"
         )
 
-        st.write(row["summary"])
 
         st.caption(row["tags"])
 

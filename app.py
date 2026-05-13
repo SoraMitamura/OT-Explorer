@@ -383,6 +383,13 @@ elif view_mode in ["Coronal2", "Pseudo-Dorsal2"]:
         
         df = pd.read_csv("c62_whole_OT2.csv")
 
+    elif cluster == "ICj":
+
+        df = pd.read_csv("whole_ICj2.csv")
+
+    else:
+        
+
 # ---------------------------------------------------------
 # GENE LIST
 # ---------------------------------------------------------

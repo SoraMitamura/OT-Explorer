@@ -60,15 +60,9 @@ if category:
         filtered["category"].isin(category)
     ]
 
-if species:
-    filtered = filtered[
-        filtered["species"].isin(species)
-    ]
 
-if method:
-    filtered = filtered[
-        filtered["method"].isin(method)
-    ]
+
+
 
 if search:
     filtered = filtered[

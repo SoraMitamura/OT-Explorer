@@ -346,7 +346,7 @@ view_mode = st.sidebar.radio(
 
 cluster = st.sidebar.selectbox(
     "Cluster(5)",
-    ["D1", "D2", "Pdyn(+)Penk(+) D1", "ICj", "Cap"],
+    ["D1", "D2", "Pdyn(+)Penk(+) D1", "ICj", "Dwarf Cell"],
     index=0
 )
 # =========================================================

@@ -346,22 +346,22 @@ view_mode = st.sidebar.radio(
 
 cluster = st.sidebar.selectbox(
     "Cluster(5)",
-    ["D1", "D2", "Pdyn(+)Penk(+) D1", "ICj", "Dwarf Cell"],
+    ["D1-MSN", "D2-MSN", "Pdyn(+)Penk(+)D1-MSN", "ICj", "Dwarf Cell"],
     index=0
 )
 # =========================================================
 # LOAD DATA
 # =========================================================
 if view_mode in ["Coronal", "Pseudo-Dorsal"]:
-    if cluster == "D1":
+    if cluster == "D1-MSN":
 
         df = pd.read_csv("c61_whole_OT.csv")
 
-    elif cluster == "D2":
+    elif cluster == "D2-MSN":
 
         df = pd.read_csv("c62_whole_OT.csv")
 
-    elif cluster == "Pdyn(+)Penk(+) D1":
+    elif cluster == "Pdyn(+)Penk(+)D1-MSN":
 
         df = pd.read_csv("c63_whole_OT.csv")
 
@@ -375,15 +375,15 @@ if view_mode in ["Coronal", "Pseudo-Dorsal"]:
         
 elif view_mode in ["Coronal2", "Pseudo-Dorsal2"]:
 
-    if cluster == "D1":
+    if cluster == "D1-MSN":
         
         df = pd.read_csv("c61_whole_OT2.csv")
 
-    elif cluster == "D2":
+    elif cluster == "D2-MSN":
         
         df = pd.read_csv("c62_whole_OT2.csv")
 
-    elif cluster == "Pdyn(+)Penk(+) D1":
+    elif cluster == "Pdyn(+)Penk(+)D1-MSN":
 
         df = pd.read_csv("c63_whole_OT2.csv")
 
